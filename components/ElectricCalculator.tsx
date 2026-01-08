@@ -4,7 +4,13 @@ import { useState } from 'react';
 
 export default function ElectricCalculator() {
   const [usage, setUsage] = useState<string>('');
-  const [result, setResult] = useState<number | null>(null);
+  const [result, setResult] = useState<{
+    basicCharge: number;
+    energyCharge: number;
+    vat: number;
+    fund: number;
+    total: number;
+  } | null>(null);
 
   const calculate = () => {
     try {
@@ -25,30 +31,40 @@ export default function ElectricCalculator() {
         return;
       }
 
-    // 주택용 전기요금 계산 (2024년 기준, 저압 주택용)
-    let basicCharge = 0;
-    if (kwh <= 200) {
-      basicCharge = 910;
-    } else if (kwh <= 400) {
-      basicCharge = 1600;
-    } else {
-      basicCharge = 7300;
-    }
+      // 주택용 전기요금 계산 (2024년 기준, 저압 주택용)
+      let basicCharge = 0;
+      if (kwh <= 200) {
+        basicCharge = 910;
+      } else if (kwh <= 400) {
+        basicCharge = 1600;
+      } else {
+        basicCharge = 7300;
+      }
 
-    let energyCharge = 0;
-    if (kwh <= 200) {
-      energyCharge = kwh * 120.7;
-    } else if (kwh <= 400) {
-      energyCharge = 200 * 120.7 + (kwh - 200) * 214.6;
-    } else {
-      energyCharge = 200 * 120.7 + 200 * 214.6 + (kwh - 400) * 307.3;
-    }
+      let energyCharge = 0;
+      if (kwh <= 200) {
+        energyCharge = kwh * 120.7;
+      } else if (kwh <= 400) {
+        energyCharge = 200 * 120.7 + (kwh - 200) * 214.6;
+      } else {
+        energyCharge = 200 * 120.7 + 200 * 214.6 + (kwh - 400) * 307.3;
+      }
 
-    const vat = (basicCharge + energyCharge) * 0.1;
-    const fund = (basicCharge + energyCharge) * 0.037;
-    const total = basicCharge + energyCharge + vat + fund;
+      // 부가가치세 (VAT): 기본료 + 전력량요금의 10%
+      const vat = Math.floor((basicCharge + energyCharge) * 0.1);
+      
+      // 전력산업기반기금: 기본료 + 전력량요금의 3.7%
+      const fund = Math.floor((basicCharge + energyCharge) * 0.037);
+      
+      const total = basicCharge + energyCharge + vat + fund;
 
-    setResult(total);
+      setResult({
+        basicCharge,
+        energyCharge,
+        vat,
+        fund,
+        total,
+      });
     } catch (error) {
       console.error('계산 중 오류 발생:', error);
       if (typeof window !== 'undefined') {
@@ -101,25 +117,56 @@ export default function ElectricCalculator() {
 
       {result !== null && (
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">계산 결과</h2>
-          <div className="bg-blue-50 rounded-md p-6">
-            <div className="text-center">
-              <p className="text-gray-700 mb-2">예상 전기요금</p>
-              <p className="text-4xl font-bold text-blue-600">
-                {formatNumber(result)}원
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">계산 결과</h2>
+          <div className="space-y-4">
+            <div className="flex justify-between items-center py-2 border-b">
+              <span className="text-gray-700">기본료</span>
+              <span className="text-lg font-semibold text-gray-900">
+                {formatNumber(result.basicCharge)}원
+              </span>
+            </div>
+            <div className="flex justify-between items-center py-2 border-b">
+              <span className="text-gray-700">전력량요금</span>
+              <span className="text-lg font-semibold text-gray-900">
+                {formatNumber(result.energyCharge)}원
+              </span>
+            </div>
+            <div className="flex justify-between items-center py-2 border-b">
+              <span className="text-gray-700">부가가치세 (VAT)</span>
+              <span className="text-gray-900">
+                {formatNumber(result.vat)}원
+              </span>
+            </div>
+            <div className="flex justify-between items-center py-2 border-b">
+              <span className="text-gray-700">전력산업기반기금</span>
+              <span className="text-gray-900">
+                {formatNumber(result.fund)}원
+              </span>
+            </div>
+            <div className="bg-blue-50 rounded-md p-6 mt-4">
+              <div className="text-center">
+                <p className="text-gray-700 mb-2">예상 전기요금</p>
+                <p className="text-4xl font-bold text-blue-600">
+                  {formatNumber(result.total)}원
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 p-4 bg-gray-50 rounded-md">
+              <p className="text-sm text-gray-600 mb-2">
+                <strong>전력량요금 구간:</strong>
+              </p>
+              <ul className="text-sm text-gray-600 list-disc list-inside space-y-1">
+                <li>200kWh 이하: kWh당 120.7원</li>
+                <li>201~400kWh: kWh당 214.6원</li>
+                <li>401kWh 이상: kWh당 307.3원</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3">
+                <strong>참고:</strong> 주택용 저압 기준으로 계산되었습니다. 실제 요금은 계약 전력, 사용 패턴 등에 따라 달라질 수 있습니다.
               </p>
             </div>
-          </div>
-          <div className="mt-4 p-4 bg-gray-50 rounded-md">
-            <p className="text-sm text-gray-600">
-              <strong>참고:</strong> 주택용 저압 기준으로 계산되었습니다.
-              <br />
-              실제 요금은 계약 전력, 사용 패턴 등에 따라 달라질 수 있습니다.
-            </p>
           </div>
         </div>
       )}
     </>
   );
 }
-
