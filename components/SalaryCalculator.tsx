@@ -1,10 +1,13 @@
 'use client';
 
 import { useState, Fragment } from 'react';
+import { useTranslations } from 'next-intl';
 
 type SalaryType = 'annual' | 'monthly';
 
 export default function SalaryCalculator() {
+  const t = useTranslations('salary');
+  const commonT = useTranslations('common');
   const [salaryType, setSalaryType] = useState<SalaryType>('monthly');
   const [salaryAmount, setSalaryAmount] = useState<string>('');
   const [nonTaxableAmount, setNonTaxableAmount] = useState<string>('100000');
@@ -99,7 +102,7 @@ export default function SalaryCalculator() {
 
       if (!cleanSalary) {
         if (typeof window !== 'undefined') {
-          alert('계산금액을 입력해주세요.');
+          alert(t('enterAmount') || '계산금액을 입력해주세요.');
         }
         return;
       }
@@ -111,7 +114,7 @@ export default function SalaryCalculator() {
 
       if (isNaN(salary) || salary <= 0) {
         if (typeof window !== 'undefined') {
-          alert('올바른 금액을 입력해주세요.');
+          alert(t('enterValidAmount') || '올바른 금액을 입력해주세요.');
         }
         return;
       }
@@ -177,7 +180,7 @@ export default function SalaryCalculator() {
     } catch (error) {
       console.error('계산 중 오류 발생:', error);
       if (typeof window !== 'undefined') {
-        alert('계산 중 오류가 발생했습니다. 다시 시도해주세요.');
+        alert(t('error') || '계산 중 오류가 발생했습니다. 다시 시도해주세요.');
       }
     }
   };
@@ -187,10 +190,14 @@ export default function SalaryCalculator() {
       return '0';
     }
     try {
-      return Math.round(num).toLocaleString('ko-KR');
+      return Math.round(num).toLocaleString();
     } catch {
       return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
+  };
+  
+  const getCurrency = () => {
+    return commonT('currency');
   };
 
   return (
@@ -198,7 +205,7 @@ export default function SalaryCalculator() {
       <div className="bg-white rounded-lg shadow-md p-8 mb-8">
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            연봉/월급
+            {t('salaryType')}
           </label>
           <div className="flex gap-4">
             <label className="flex items-center">
@@ -210,7 +217,7 @@ export default function SalaryCalculator() {
                 onChange={(e) => setSalaryType(e.target.value as SalaryType)}
                 className="mr-2"
               />
-              <span className="text-gray-700">연봉(퇴직금 별도)</span>
+              <span className="text-gray-700">{t('annualSalary')}</span>
             </label>
             <label className="flex items-center">
               <input
@@ -221,14 +228,14 @@ export default function SalaryCalculator() {
                 onChange={(e) => setSalaryType(e.target.value as SalaryType)}
                 className="mr-2"
               />
-              <span className="text-gray-700">월급</span>
+              <span className="text-gray-700">{t('monthlySalary')}</span>
             </label>
           </div>
         </div>
 
         <div className="mb-6">
           <label htmlFor="salary" className="block text-sm font-medium text-gray-700 mb-2">
-            계산금액 (원)
+            {t('amount')} ({getCurrency()})
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -242,13 +249,13 @@ export default function SalaryCalculator() {
               placeholder="0"
               className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
             />
-            <span className="text-gray-600">원</span>
+            <span className="text-gray-600">{getCurrency()}</span>
           </div>
         </div>
 
         <div className="mb-6">
           <label htmlFor="nonTaxable" className="block text-sm font-medium text-gray-700 mb-2">
-            비과세액 (원)
+            {t('nonTaxable')} ({getCurrency()})
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -262,13 +269,13 @@ export default function SalaryCalculator() {
               placeholder="100000"
               className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
             />
-            <span className="text-gray-600">원 (기본10만원)</span>
+            <span className="text-gray-600">{t('nonTaxableHint')}</span>
           </div>
         </div>
 
         <div className="mb-6">
           <label htmlFor="dependents" className="block text-sm font-medium text-gray-700 mb-2">
-            부양가족 (명)
+            {t('dependents')}
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -282,13 +289,13 @@ export default function SalaryCalculator() {
               placeholder="1"
               className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
             />
-            <span className="text-gray-600">명(본인포함)</span>
+            <span className="text-gray-600">{t('dependentsHint')}</span>
           </div>
         </div>
 
         <div className="mb-6">
           <label htmlFor="children" className="block text-sm font-medium text-gray-700 mb-2">
-            20세이하자녀 (명)
+            {t('children')}
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -302,7 +309,7 @@ export default function SalaryCalculator() {
               placeholder="0"
               className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
             />
-            <span className="text-gray-600">명</span>
+            <span className="text-gray-600">{t('childrenHint')}</span>
           </div>
         </div>
 
@@ -310,66 +317,66 @@ export default function SalaryCalculator() {
           onClick={calculate}
           className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium text-lg"
         >
-          실수령액 계산하기
+          {t('calculateButton')}
         </button>
 
         <p className="mt-4 text-sm text-gray-500 text-center">
-          실수령액 계산은 국세청 간이세액표를 기준으로 계산됩니다.
+          {t('note')}
         </p>
       </div>
 
       {result && (
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">계산 결과</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">월 급여액</span>
+              <span className="text-gray-700">{t('result.monthlySalary')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {formatNumber(result.monthlySalary)}원
+                {formatNumber(result.monthlySalary)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">연봉</span>
-              <span className="text-gray-900">{formatNumber(result.annualSalary)}원</span>
+              <span className="text-gray-700">{t('result.annualSalary')}</span>
+              <span className="text-gray-900">{formatNumber(result.annualSalary)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">비과세액</span>
-              <span className="text-gray-900">{formatNumber(result.nonTaxableAmount)}원</span>
+              <span className="text-gray-700">{t('result.nonTaxableAmount')}</span>
+              <span className="text-gray-900">{formatNumber(result.nonTaxableAmount)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">국민연금 (4.5%)</span>
-              <span className="text-gray-900">{formatNumber(result.nationalPension)}원</span>
+              <span className="text-gray-700">{t('result.nationalPension')}</span>
+              <span className="text-gray-900">{formatNumber(result.nationalPension)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">건강보험 (3.545%)</span>
-              <span className="text-gray-900">{formatNumber(result.healthInsurance)}원</span>
+              <span className="text-gray-700">{t('result.healthInsurance')}</span>
+              <span className="text-gray-900">{formatNumber(result.healthInsurance)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">고용보험 (0.9%)</span>
-              <span className="text-gray-900">{formatNumber(result.employmentInsurance)}원</span>
+              <span className="text-gray-700">{t('result.employmentInsurance')}</span>
+              <span className="text-gray-900">{formatNumber(result.employmentInsurance)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">산재보험 (0.6%)</span>
-              <span className="text-gray-900">{formatNumber(result.industrialAccidentInsurance)}원</span>
+              <span className="text-gray-700">{t('result.industrialAccidentInsurance')}</span>
+              <span className="text-gray-900">{formatNumber(result.industrialAccidentInsurance)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">소득세</span>
-              <span className="text-gray-900">{formatNumber(result.incomeTax)}원</span>
+              <span className="text-gray-700">{t('result.incomeTax')}</span>
+              <span className="text-gray-900">{formatNumber(result.incomeTax)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">지방소득세</span>
-              <span className="text-gray-900">{formatNumber(result.localIncomeTax)}원</span>
+              <span className="text-gray-700">{t('result.localIncomeTax')}</span>
+              <span className="text-gray-900">{formatNumber(result.localIncomeTax)}{getCurrency()}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">총 공제액</span>
+              <span className="text-gray-700">{t('result.totalDeduction')}</span>
               <span className="text-lg font-semibold text-red-600">
-                -{formatNumber(result.totalDeduction)}원
+                -{formatNumber(result.totalDeduction)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-3 bg-blue-50 rounded-md px-4 mt-4">
-              <span className="text-xl font-semibold text-gray-900">월 실수령액</span>
+              <span className="text-xl font-semibold text-gray-900">{t('result.netMonthlySalary')}</span>
               <span className="text-2xl font-bold text-blue-600">
-                {formatNumber(result.netMonthlySalary)}원
+                {formatNumber(result.netMonthlySalary)}{getCurrency()}
               </span>
             </div>
           </div>

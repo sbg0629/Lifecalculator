@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type WageType = 'average' | 'monthly';
 
 export default function SeveranceCalculator() {
+  const t = useTranslations('severance');
   const [wageType, setWageType] = useState<WageType>('monthly');
   const [wageAmount, setWageAmount] = useState<string>('');
   const [yearsOfService, setYearsOfService] = useState<string>('');
@@ -23,7 +25,7 @@ export default function SeveranceCalculator() {
       
       if (!cleanWage) {
         if (typeof window !== 'undefined') {
-          alert('임금을 입력해주세요.');
+          alert(t('enterWage'));
         }
         return;
       }
@@ -34,7 +36,7 @@ export default function SeveranceCalculator() {
 
       if (isNaN(wage) || wage <= 0) {
         if (typeof window !== 'undefined') {
-          alert('올바른 임금을 입력해주세요.');
+          alert(t('enterValidWage'));
         }
         return;
       }
@@ -51,7 +53,7 @@ export default function SeveranceCalculator() {
 
       if (totalYears <= 0) {
         if (typeof window !== 'undefined') {
-          alert('근속연수를 입력해주세요.');
+          alert(t('enterYears'));
         }
         return;
       }
@@ -68,7 +70,7 @@ export default function SeveranceCalculator() {
     } catch (error) {
       console.error('계산 중 오류 발생:', error);
       if (typeof window !== 'undefined') {
-        alert('계산 중 오류가 발생했습니다. 다시 시도해주세요.');
+        alert(t('error'));
       }
     }
   };
@@ -78,10 +80,14 @@ export default function SeveranceCalculator() {
       return '0';
     }
     try {
-      return Math.round(num).toLocaleString('ko-KR');
+      return Math.round(num).toLocaleString();
     } catch {
       return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
+  };
+  
+  const getCurrency = () => {
+    return t('common.currency', { defaultValue: '원' });
   };
 
   return (
@@ -89,7 +95,7 @@ export default function SeveranceCalculator() {
       <div className="bg-white rounded-lg shadow-md p-8 mb-8">
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            임금 종류
+            {t('wageType')}
           </label>
           <div className="flex gap-4">
             <label className="flex items-center">
@@ -101,7 +107,7 @@ export default function SeveranceCalculator() {
                 onChange={(e) => setWageType(e.target.value as WageType)}
                 className="mr-2"
               />
-              <span className="text-gray-700">평균임금</span>
+              <span className="text-gray-700">{t('averageWage')}</span>
             </label>
             <label className="flex items-center">
               <input
@@ -112,19 +118,17 @@ export default function SeveranceCalculator() {
                 onChange={(e) => setWageType(e.target.value as WageType)}
                 className="mr-2"
               />
-              <span className="text-gray-700">월급여액</span>
+              <span className="text-gray-700">{t('monthlySalary')}</span>
             </label>
           </div>
           <p className="mt-2 text-sm text-gray-500">
-            {wageType === 'average' 
-              ? '평균임금: 퇴직일 이전 3개월간의 임금 총액을 그 기간의 총 일수로 나눈 금액'
-              : '월급여액: 최근 월급여액 (평균임금 계산의 근사치로 사용)'}
+            {wageType === 'average' ? t('averageWageDesc') : t('monthlySalaryDesc')}
           </p>
         </div>
 
         <div className="mb-6">
           <label htmlFor="wage" className="block text-sm font-medium text-gray-700 mb-2">
-            {wageType === 'average' ? '평균임금 (원)' : '월급여액 (원)'}
+            {wageType === 'average' ? t('wageInput') : t('monthlyWageInput')}
           </label>
           <input
             type="text"
@@ -141,12 +145,12 @@ export default function SeveranceCalculator() {
 
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            근속연수
+            {t('yearsOfService')}
           </label>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="years" className="block text-xs text-gray-600 mb-1">
-                년
+                {t('years')}
               </label>
               <input
                 type="text"
@@ -162,7 +166,7 @@ export default function SeveranceCalculator() {
             </div>
             <div>
               <label htmlFor="months" className="block text-xs text-gray-600 mb-1">
-                개월
+                {t('months')}
               </label>
               <input
                 type="text"
@@ -178,7 +182,7 @@ export default function SeveranceCalculator() {
             </div>
           </div>
           <p className="mt-2 text-sm text-gray-500">
-            소수점 입력 가능 (예: 3.5년 또는 3년 6개월)
+            {t('yearsHint')}
           </p>
         </div>
 
@@ -186,51 +190,51 @@ export default function SeveranceCalculator() {
           onClick={calculate}
           className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium text-lg"
         >
-          계산하기
+          {t('calculateButton')}
         </button>
       </div>
 
       {result !== null && (
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">계산 결과</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{t('result.title')}</h2>
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">평균임금</span>
+              <span className="text-gray-700">{t('result.averageWage')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {formatNumber(result.averageWage)}원
+                {formatNumber(result.averageWage)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">근속연수</span>
+              <span className="text-gray-700">{t('result.yearsOfService')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {result.yearsOfService.toFixed(2)}년
+                {result.yearsOfService.toFixed(2)} {t('years')}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">계산식</span>
+              <span className="text-gray-700">{t('result.formula')}</span>
               <span className="text-sm text-gray-600">
-                평균임금 × 30일 × 근속연수
+                {t('result.formulaText')}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">상세 계산</span>
+              <span className="text-gray-700">{t('result.detail')}</span>
               <span className="text-sm text-gray-600">
                 {formatNumber(result.averageWage)} × 30 × {result.yearsOfService.toFixed(2)}
               </span>
             </div>
             <div className="bg-blue-50 rounded-md p-6 mt-4">
               <div className="text-center">
-                <p className="text-gray-700 mb-2">예상 퇴직금</p>
+                <p className="text-gray-700 mb-2">{t('result.severancePay')}</p>
                 <p className="text-4xl font-bold text-blue-600">
-                  {formatNumber(result.severancePay)}원
+                  {formatNumber(result.severancePay)}{getCurrency()}
                 </p>
               </div>
             </div>
             <div className="mt-4 p-4 bg-gray-50 rounded-md">
               <p className="text-sm text-gray-600">
-                <strong>참고:</strong> 근로기준법 제34조에 따른 계산입니다.
+                <strong>{t('result.note')}</strong> {t('result.noteText')}
                 <br />
-                실제 퇴직금은 평균임금 산정 방식, 각종 수당 포함 여부 등에 따라 달라질 수 있습니다.
+                {t('result.noteText2')}
               </p>
             </div>
           </div>

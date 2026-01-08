@@ -1,8 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function UnemploymentCalculator() {
+  const t = useTranslations('unemployment');
+  const commonT = useTranslations('common');
   const [averageWage, setAverageWage] = useState<string>('');
   const [yearsOfService, setYearsOfService] = useState<string>('');
   const [monthsOfService, setMonthsOfService] = useState<string>('');
@@ -22,7 +25,7 @@ export default function UnemploymentCalculator() {
       
       if (!cleanWage) {
         if (typeof window !== 'undefined') {
-          alert('평균임금을 입력해주세요.');
+          alert(t('enterWage'));
         }
         return;
       }
@@ -33,7 +36,7 @@ export default function UnemploymentCalculator() {
 
       if (isNaN(wage) || wage <= 0) {
         if (typeof window !== 'undefined') {
-          alert('올바른 평균임금을 입력해주세요.');
+          alert(t('enterValidWage'));
         }
         return;
       }
@@ -43,7 +46,7 @@ export default function UnemploymentCalculator() {
 
       if (totalYears <= 0) {
         if (typeof window !== 'undefined') {
-          alert('근속기간을 입력해주세요.');
+          alert(t('enterPeriod'));
         }
         return;
       }
@@ -82,7 +85,7 @@ export default function UnemploymentCalculator() {
     } catch (error) {
       console.error('계산 중 오류 발생:', error);
       if (typeof window !== 'undefined') {
-        alert('계산 중 오류가 발생했습니다. 다시 시도해주세요.');
+        alert(t('error'));
       }
     }
   };
@@ -92,10 +95,14 @@ export default function UnemploymentCalculator() {
       return '0';
     }
     try {
-      return Math.round(num).toLocaleString('ko-KR');
+      return Math.round(num).toLocaleString();
     } catch {
       return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
+  };
+  
+  const getCurrency = () => {
+    return commonT('currency');
   };
 
   return (
@@ -103,7 +110,7 @@ export default function UnemploymentCalculator() {
       <div className="bg-white rounded-lg shadow-md p-8 mb-8">
         <div className="mb-6">
           <label htmlFor="wage" className="block text-sm font-medium text-gray-700 mb-2">
-            평균임금 (원)
+            {t('averageWage')}
           </label>
           <input
             type="text"
@@ -117,18 +124,18 @@ export default function UnemploymentCalculator() {
             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
           />
           <p className="mt-2 text-sm text-gray-500">
-            최근 3개월간의 평균 임금을 입력하세요
+            {t('averageWageHint')}
           </p>
         </div>
 
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            근속기간
+            {t('servicePeriod')}
           </label>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="years" className="block text-xs text-gray-600 mb-1">
-                년
+                {t('years')}
               </label>
               <input
                 type="text"
@@ -144,7 +151,7 @@ export default function UnemploymentCalculator() {
             </div>
             <div>
               <label htmlFor="months" className="block text-xs text-gray-600 mb-1">
-                개월
+                {t('months')}
               </label>
               <input
                 type="text"
@@ -160,7 +167,7 @@ export default function UnemploymentCalculator() {
             </div>
           </div>
           <p className="mt-2 text-sm text-gray-500">
-            소수점 입력 가능 (예: 3.5년 또는 3년 6개월)
+            {t('yearsHint')}
           </p>
         </div>
 
@@ -168,62 +175,62 @@ export default function UnemploymentCalculator() {
           onClick={calculate}
           className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium text-lg"
         >
-          계산하기
+          {t('calculateButton')}
         </button>
       </div>
 
       {result && (
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">계산 결과</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">일평균임금</span>
+              <span className="text-gray-700">{t('result.dailyWage')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {formatNumber(result.dailyWage)}원
+                {formatNumber(result.dailyWage)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">일일 실업급여액</span>
+              <span className="text-gray-700">{t('result.dailyBenefit')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {formatNumber(result.dailyBenefit)}원
+                {formatNumber(result.dailyBenefit)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">급여율</span>
+              <span className="text-gray-700">{t('result.benefitRate')}</span>
               <span className="text-sm text-gray-600">
-                일평균임금의 60% (최소 60,120원, 최대 66,000원)
+                {t('result.benefitRateText')}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">월 예상 실업급여</span>
+              <span className="text-gray-700">{t('result.monthlyBenefit')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {formatNumber(result.monthlyBenefit)}원
+                {formatNumber(result.monthlyBenefit)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">수급기간</span>
+              <span className="text-gray-700">{t('result.paymentDays')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {result.paymentDays}일
+                {result.paymentDays}{t('common.days', { defaultValue: '일' })}
               </span>
             </div>
             <div className="bg-blue-50 rounded-md p-6 mt-4">
               <div className="text-center">
-                <p className="text-gray-700 mb-2">총 예상 실업급여</p>
+                <p className="text-gray-700 mb-2">{t('result.totalBenefit')}</p>
                 <p className="text-4xl font-bold text-blue-600">
-                  {formatNumber(result.totalBenefit)}원
+                  {formatNumber(result.totalBenefit)}{getCurrency()}
                 </p>
               </div>
             </div>
             <div className="mt-4 p-4 bg-gray-50 rounded-md">
               <p className="text-sm text-gray-600 mb-2">
-                <strong>수급기간 안내:</strong>
+                <strong>{t('result.periodGuide')}</strong>
               </p>
               <ul className="text-sm text-gray-600 list-disc list-inside space-y-1">
-                <li>1년 미만: 90일</li>
-                <li>1년 이상 3년 미만: 120일</li>
-                <li>3년 이상 5년 미만: 150일</li>
-                <li>5년 이상 10년 미만: 180일</li>
-                <li>10년 이상: 240일</li>
+                <li>{t('result.period1')}</li>
+                <li>{t('result.period2')}</li>
+                <li>{t('result.period3')}</li>
+                <li>{t('result.period4')}</li>
+                <li>{t('result.period5')}</li>
               </ul>
             </div>
           </div>

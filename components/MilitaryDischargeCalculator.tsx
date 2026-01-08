@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type ServiceType = 'army' | 'navy' | 'airforce' | 'marines';
 
@@ -11,14 +12,9 @@ const SERVICE_MONTHS: Record<ServiceType, number> = {
   marines: 18,
 };
 
-const SERVICE_LABELS: Record<ServiceType, string> = {
-  army: '육군',
-  navy: '해군',
-  airforce: '공군',
-  marines: '해병대',
-};
-
 export default function MilitaryDischargeCalculator() {
+  const t = useTranslations('militaryDischarge');
+  const commonT = useTranslations('common');
   const [enlistDate, setEnlistDate] = useState<string>('');
   const [serviceType, setServiceType] = useState<ServiceType>('army');
   const [result, setResult] = useState<{
@@ -28,11 +24,18 @@ export default function MilitaryDischargeCalculator() {
     progress: number;
   } | null>(null);
 
+  const SERVICE_LABELS: Record<ServiceType, string> = {
+    army: t('army'),
+    navy: t('navy'),
+    airforce: t('airforce'),
+    marines: t('marines'),
+  };
+
   const calculate = () => {
     try {
       if (!enlistDate) {
         if (typeof window !== 'undefined') {
-          alert('입대일을 입력해주세요.');
+          alert(t('enterDate'));
         }
         return;
       }
@@ -40,7 +43,7 @@ export default function MilitaryDischargeCalculator() {
       const enlist = new Date(enlistDate);
       if (isNaN(enlist.getTime())) {
         if (typeof window !== 'undefined') {
-          alert('올바른 날짜를 입력해주세요.');
+          alert(t('enterValidDate'));
         }
         return;
       }
@@ -68,7 +71,7 @@ export default function MilitaryDischargeCalculator() {
     } catch (error) {
       console.error('계산 중 오류 발생:', error);
       if (typeof window !== 'undefined') {
-        alert('계산 중 오류가 발생했습니다. 다시 시도해주세요.');
+        alert(t('error'));
       }
     }
   };
@@ -83,7 +86,7 @@ export default function MilitaryDischargeCalculator() {
   };
 
   const formatNumber = (num: number) => {
-    return Math.abs(num).toLocaleString('ko-KR');
+    return Math.abs(num).toLocaleString();
   };
 
   return (
@@ -91,7 +94,7 @@ export default function MilitaryDischargeCalculator() {
       <div className="bg-white rounded-lg shadow-md p-8 mb-8">
         <div className="mb-6">
           <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 mb-3">
-            군종
+            {t('serviceType')}
           </label>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {(['army', 'navy', 'airforce', 'marines'] as ServiceType[]).map((type) => (
@@ -112,7 +115,7 @@ export default function MilitaryDischargeCalculator() {
                   className="mr-2"
                 />
                 <span className="text-sm font-medium">
-                  {SERVICE_LABELS[type]} ({SERVICE_MONTHS[type]}개월)
+                  {SERVICE_LABELS[type]} ({SERVICE_MONTHS[type]}{t('months')})
                 </span>
               </label>
             ))}
@@ -121,7 +124,7 @@ export default function MilitaryDischargeCalculator() {
 
         <div className="mb-6">
           <label htmlFor="enlistDate" className="block text-sm font-medium text-gray-700 mb-2">
-            입대일
+            {t('enlistDate')}
           </label>
           <input
             type="date"
@@ -131,7 +134,7 @@ export default function MilitaryDischargeCalculator() {
             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
           />
           <p className="mt-2 text-sm text-gray-500">
-            입대일을 선택해주세요
+            {t('enlistDateHint')}
           </p>
         </div>
 
@@ -139,17 +142,17 @@ export default function MilitaryDischargeCalculator() {
           onClick={calculate}
           className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium text-lg"
         >
-          전역일 계산하기
+          {t('calculateButton')}
         </button>
       </div>
 
       {result && (
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">계산 결과</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
           <div className="space-y-4">
             <div className="bg-blue-50 rounded-md p-6">
               <div className="text-center">
-                <p className="text-gray-700 mb-2">예상 전역일</p>
+                <p className="text-gray-700 mb-2">{t('result.dischargeDate')}</p>
                 <p className="text-3xl font-bold text-blue-600">
                   {formatDate(result.dischargeDate)}
                 </p>
@@ -158,22 +161,22 @@ export default function MilitaryDischargeCalculator() {
 
             <div className="grid grid-cols-2 gap-4 mt-6">
               <div className="bg-gray-50 rounded-md p-4 text-center">
-                <p className="text-sm text-gray-600 mb-1">복무한 일수</p>
+                <p className="text-sm text-gray-600 mb-1">{t('result.daysServed')}</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {formatNumber(result.daysServed)}일
+                  {formatNumber(result.daysServed)}{commonT('days')}
                 </p>
               </div>
               <div className="bg-gray-50 rounded-md p-4 text-center">
-                <p className="text-sm text-gray-600 mb-1">남은 일수</p>
+                <p className="text-sm text-gray-600 mb-1">{t('result.daysRemaining')}</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {formatNumber(result.daysRemaining)}일
+                  {formatNumber(result.daysRemaining)}{commonT('days')}
                 </p>
               </div>
             </div>
 
             <div className="mt-6">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-700">복무 진행률</span>
+                <span className="text-sm font-medium text-gray-700">{t('result.progress')}</span>
                 <span className="text-sm font-medium text-gray-700">
                   {result.progress.toFixed(1)}%
                 </span>
@@ -188,9 +191,9 @@ export default function MilitaryDischargeCalculator() {
 
             <div className="mt-4 p-4 bg-gray-50 rounded-md">
               <p className="text-sm text-gray-600">
-                <strong>참고:</strong> {SERVICE_LABELS[serviceType]}의 복무기간은 {SERVICE_MONTHS[serviceType]}개월입니다.
+                <strong>{t('result.note')}</strong> {SERVICE_LABELS[serviceType]}{t('result.noteText')} {SERVICE_MONTHS[serviceType]}{t('months')}입니다.
                 <br />
-                실제 전역일은 휴가, 병가 등에 따라 달라질 수 있습니다.
+                {t('result.noteText2')}
               </p>
             </div>
           </div>
@@ -199,4 +202,3 @@ export default function MilitaryDischargeCalculator() {
     </>
   );
 }
-

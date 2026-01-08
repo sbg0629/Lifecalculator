@@ -1,64 +1,81 @@
+'use client';
+
 import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Footer() {
+  const locale = useLocale();
+  const t = useTranslations('footer');
+  const nav = useTranslations('nav');
+
   return (
     <footer className="bg-gray-50 border-t border-gray-200 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">생활 계산기</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('title')}</h3>
             <p className="text-sm text-gray-600">
-              일상생활에 필요한 다양한 계산기를 제공하는 서비스입니다.
+              {t('description')}
             </p>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">계산기</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('calculators')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/salary" className="text-gray-600 hover:text-blue-600">
-                  연봉 실수령액
+                <Link href={`/${locale}/salary`} className="text-gray-600 hover:text-blue-600">
+                  {nav('salary')}
                 </Link>
               </li>
               <li>
-                <Link href="/severance" className="text-gray-600 hover:text-blue-600">
-                  퇴직금 계산기
+                <Link href={`/${locale}/severance`} className="text-gray-600 hover:text-blue-600">
+                  {nav('severance')}
                 </Link>
               </li>
               <li>
-                <Link href="/unemployment" className="text-gray-600 hover:text-blue-600">
-                  실업급여 계산기
+                <Link href={`/${locale}/unemployment`} className="text-gray-600 hover:text-blue-600">
+                  {nav('unemployment')}
                 </Link>
               </li>
               <li>
-                <Link href="/electric" className="text-gray-600 hover:text-blue-600">
-                  전기요금 계산기
+                <Link href={`/${locale}/electric`} className="text-gray-600 hover:text-blue-600">
+                  {nav('electric')}
                 </Link>
               </li>
               <li>
-                <Link href="/gas" className="text-gray-600 hover:text-blue-600">
-                  가스요금 계산기
+                <Link href={`/${locale}/gas`} className="text-gray-600 hover:text-blue-600">
+                  {nav('gas')}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/military-discharge`} className="text-gray-600 hover:text-blue-600">
+                  {nav('militaryDischarge')}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/baby-days`} className="text-gray-600 hover:text-blue-600">
+                  {nav('babyDays')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">법적 고지</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('legal')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="text-gray-600 hover:text-blue-600">
-                  개인정보처리방침
+                <Link href={`/${locale}/privacy`} className="text-gray-600 hover:text-blue-600">
+                  {t('privacy')}
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-gray-600 hover:text-blue-600">
-                  이용약관
+                <Link href={`/${locale}/terms`} className="text-gray-600 hover:text-blue-600">
+                  {t('terms')}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-blue-600">
-                  문의하기
+                <Link href={`/${locale}/contact`} className="text-gray-600 hover:text-blue-600">
+                  {t('contact')}
                 </Link>
               </li>
             </ul>
@@ -66,7 +83,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
-          <p>&copy; {new Date().getFullYear()} 생활 계산기. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t('title')}. {t('copyright')}</p>
         </div>
       </div>
     </footer>

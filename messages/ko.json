@@ -1,0 +1,281 @@
+{
+  "common": {
+    "siteName": "생활 계산기",
+    "description": "일상생활에 필요한 다양한 계산기를 제공합니다.",
+    "calculate": "계산하기",
+    "result": "계산 결과",
+    "adArea": "광고 영역",
+    "currency": "원",
+    "days": "일"
+  },
+  "nav": {
+    "siteName": "생활 계산기",
+    "calculatorList": "계산기 목록",
+    "salary": "연봉 실수령액",
+    "severance": "퇴직금 계산기",
+    "unemployment": "실업급여 계산기",
+    "electric": "전기요금 계산기",
+    "gas": "가스요금 계산기",
+    "militaryDischarge": "전역일 계산기",
+    "babyDays": "아기 태어난지"
+  },
+  "home": {
+    "title": "생활 계산기",
+    "subtitle": "일상생활에 필요한 다양한 계산기를 한 곳에서 제공합니다.",
+    "intro": "복잡한 계산식 없이 간단한 입력만으로 정확한 결과를 얻을 수 있습니다.",
+    "category": {
+      "salaryWelfare": "급여·복지",
+      "livingCosts": "생활비용",
+      "lifeCalc": "생활계산"
+    },
+    "calculators": {
+      "salary": {
+        "title": "연봉 실수령액 계산기",
+        "description": "연봉을 입력하면 4대보험과 소득세를 제외한 실제 받게 되는 월 실수령액을 계산해드립니다."
+      },
+      "severance": {
+        "title": "퇴직금 계산기",
+        "description": "평균임금과 근속연수를 입력하면 예상 퇴직금을 계산해드립니다."
+      },
+      "unemployment": {
+        "title": "실업급여 계산기",
+        "description": "평균임금과 근속기간을 입력하면 예상 실업급여를 계산해드립니다."
+      },
+      "electric": {
+        "title": "전기요금 계산기",
+        "description": "전기 사용량을 입력하면 예상 전기요금을 계산해드립니다."
+      },
+      "gas": {
+        "title": "가스요금 계산기",
+        "description": "가스 사용량을 입력하면 예상 가스요금을 계산해드립니다."
+      },
+      "militaryDischarge": {
+        "title": "전역일 계산기",
+        "description": "입대일과 군종을 입력하면 예상 전역일과 복무 진행률을 계산해드립니다."
+      },
+      "babyDays": {
+        "title": "아기 태어난지 계산기",
+        "description": "아기의 출생일을 입력하면 태어난지 며칠째인지, 몇 주, 몇 개월인지 계산해드립니다."
+      }
+    }
+  },
+  "salary": {
+    "title": "연봉 실수령액 계산기",
+    "description": "연봉을 입력하면 4대보험과 소득세를 제외한 실제 받게 되는 월 실수령액을 계산해드립니다.",
+    "salaryType": "연봉/월급",
+    "annualSalary": "연봉(퇴직금 별도)",
+    "monthlySalary": "월급",
+    "amount": "계산금액",
+    "nonTaxable": "비과세액",
+    "nonTaxableHint": "원 (기본10만원)",
+    "dependents": "부양가족",
+    "dependentsHint": "명(본인포함)",
+    "children": "20세이하자녀",
+    "childrenHint": "명",
+    "calculateButton": "실수령액 계산하기",
+    "note": "실수령액 계산은 국세청 간이세액표를 기준으로 계산됩니다.",
+    "enterAmount": "계산금액을 입력해주세요.",
+    "enterValidAmount": "올바른 금액을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "result": {
+      "monthlySalary": "월 급여액",
+      "annualSalary": "연봉",
+      "nonTaxableAmount": "비과세액",
+      "nationalPension": "국민연금 (4.5%)",
+      "healthInsurance": "건강보험 (3.545%)",
+      "employmentInsurance": "고용보험 (0.9%)",
+      "industrialAccidentInsurance": "산재보험 (0.6%)",
+      "incomeTax": "소득세",
+      "localIncomeTax": "지방소득세",
+      "totalDeduction": "총 공제액",
+      "netMonthlySalary": "월 실수령액"
+    }
+  },
+  "severance": {
+    "wageType": "임금 종류",
+    "averageWage": "평균임금",
+    "monthlySalary": "월급여액",
+    "averageWageDesc": "평균임금: 퇴직일 이전 3개월간의 임금 총액을 그 기간의 총 일수로 나눈 금액",
+    "monthlySalaryDesc": "월급여액: 최근 월급여액 (평균임금 계산의 근사치로 사용)",
+    "wageInput": "평균임금 (원)",
+    "monthlyWageInput": "월급여액 (원)",
+    "yearsOfService": "근속연수",
+    "years": "년",
+    "months": "개월",
+    "yearsHint": "소수점 입력 가능 (예: 3.5년 또는 3년 6개월)",
+    "calculateButton": "계산하기",
+    "enterWage": "임금을 입력해주세요.",
+    "enterValidWage": "올바른 임금을 입력해주세요.",
+    "enterYears": "근속연수를 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "result": {
+      "title": "계산 결과",
+      "averageWage": "평균임금",
+      "yearsOfService": "근속연수",
+      "formula": "계산식",
+      "formulaText": "평균임금 × 30일 × 근속연수",
+      "detail": "상세 계산",
+      "severancePay": "예상 퇴직금",
+      "note": "참고:",
+      "noteText": "근로기준법 제34조에 따른 계산입니다.",
+      "noteText2": "실제 퇴직금은 평균임금 산정 방식, 각종 수당 포함 여부 등에 따라 달라질 수 있습니다."
+    }
+  },
+  "unemployment": {
+    "averageWage": "평균임금 (원)",
+    "averageWageHint": "최근 3개월간의 평균 임금을 입력하세요",
+    "servicePeriod": "근속기간",
+    "years": "년",
+    "months": "개월",
+    "yearsHint": "소수점 입력 가능 (예: 3.5년 또는 3년 6개월)",
+    "calculateButton": "계산하기",
+    "enterWage": "평균임금을 입력해주세요.",
+    "enterValidWage": "올바른 평균임금을 입력해주세요.",
+    "enterPeriod": "근속기간을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "result": {
+      "title": "계산 결과",
+      "dailyWage": "일평균임금",
+      "dailyBenefit": "일일 실업급여액",
+      "benefitRate": "급여율",
+      "benefitRateText": "일평균임금의 60% (최소 60,120원, 최대 66,000원)",
+      "monthlyBenefit": "월 예상 실업급여",
+      "paymentDays": "수급기간",
+      "totalBenefit": "총 예상 실업급여",
+      "periodGuide": "수급기간 안내:",
+      "period1": "1년 미만: 90일",
+      "period2": "1년 이상 3년 미만: 120일",
+      "period3": "3년 이상 5년 미만: 150일",
+      "period4": "5년 이상 10년 미만: 180일",
+      "period5": "10년 이상: 240일"
+    }
+  },
+  "electric": {
+    "usage": "사용량 (kWh)",
+    "usageHint": "전기 사용량을 kWh 단위로 입력하세요",
+    "calculateButton": "계산하기",
+    "enterUsage": "올바른 사용량을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "result": {
+      "title": "계산 결과",
+      "basicCharge": "기본료",
+      "energyCharge": "전력량요금",
+      "vat": "부가가치세 (VAT)",
+      "fund": "전력산업기반기금",
+      "total": "예상 전기요금",
+      "rateGuide": "전력량요금 구간:",
+      "rate1": "200kWh 이하: kWh당 120.7원",
+      "rate2": "201~400kWh: kWh당 214.6원",
+      "rate3": "401kWh 이상: kWh당 307.3원",
+      "note": "참고:",
+      "noteText": "주택용 저압 기준으로 계산되었습니다. 실제 요금은 계약 전력, 사용 패턴 등에 따라 달라질 수 있습니다."
+    }
+  },
+  "gas": {
+    "usage": "사용량 (m³)",
+    "usageHint": "가스 사용량을 m³ 단위로 입력하세요",
+    "calculateButton": "계산하기",
+    "enterUsage": "올바른 사용량을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "result": {
+      "title": "계산 결과",
+      "basicCharge": "기본료",
+      "usageCharge": "사용료",
+      "vat": "부가가치세 (VAT)",
+      "total": "예상 가스요금",
+      "rateGuide": "사용료 구간:",
+      "rate1": "20m³ 이하: m³당 730원",
+      "rate2": "21~100m³: m³당 850원",
+      "rate3": "101~500m³: m³당 1,020원",
+      "rate4": "501m³ 이상: m³당 1,200원",
+      "note": "참고:",
+      "noteText": "주택용 도시가스 기준으로 계산되었습니다. 실제 요금은 지역, 가스회사, 사용 패턴 등에 따라 달라질 수 있습니다."
+    }
+  },
+  "militaryDischarge": {
+    "title": "전역일 계산기",
+    "description": "입대일과 군종을 입력하면 예상 전역일과 복무 진행률을 계산해드립니다.",
+    "serviceType": "군종",
+    "army": "육군",
+    "navy": "해군",
+    "airforce": "공군",
+    "marines": "해병대",
+    "months": "개월",
+    "enlistDate": "입대일",
+    "enlistDateHint": "입대일을 선택해주세요",
+    "calculateButton": "전역일 계산하기",
+    "enterDate": "입대일을 입력해주세요.",
+    "enterValidDate": "올바른 날짜를 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "result": {
+      "title": "계산 결과",
+      "dischargeDate": "예상 전역일",
+      "daysServed": "복무한 일수",
+      "daysRemaining": "남은 일수",
+      "progress": "복무 진행률",
+      "note": "참고:",
+      "noteText": "의 복무기간은 개월입니다.",
+      "noteText2": "실제 전역일은 휴가, 병가 등에 따라 달라질 수 있습니다."
+    }
+  },
+  "babyDays": {
+    "title": "아기 태어난지 계산기",
+    "description": "아기의 출생일을 입력하면 태어난지 며칠째인지, 몇 주, 몇 개월인지 계산해드립니다.",
+    "birthDate": "출생일",
+    "birthDateHint": "아기의 출생일을 선택해주세요",
+    "daysOld": "태어난지",
+    "days": "일",
+    "weeks": "주",
+    "months": "개월",
+    "years": "년",
+    "next100Days": "100일",
+    "nextBirthday": "다음 생일",
+    "result": {
+      "title": "계산 결과",
+      "daysOld": "태어난지",
+      "days": "일",
+      "weeks": "주",
+      "months": "개월",
+      "years": "년",
+      "next100Days": "100일",
+      "nextBirthday": "다음 생일",
+      "note": "참고:",
+      "noteText": "계산은 대략적인 값이며, 실제 나이는 생년월일을 기준으로 계산됩니다.",
+      "noteText2": "100일과 생일은 한국의 전통적인 기념일입니다."
+    }
+  },
+  "footer": {
+    "title": "생활 계산기",
+    "description": "일상생활에 필요한 다양한 계산기를 제공하는 서비스입니다.",
+    "calculators": "계산기",
+    "legal": "법적 고지",
+    "privacy": "개인정보처리방침",
+    "terms": "이용약관",
+    "contact": "문의하기",
+    "copyright": "All rights reserved."
+  },
+  "contact": {
+    "title": "문의하기",
+    "description": "생활 계산기 서비스에 대한 문의사항이나 건의사항을 보내주세요. 빠른 시일 내에 답변드리겠습니다.",
+    "intro": "생활 계산기 서비스에 대한 문의사항이나 건의사항이 있으시면 아래 양식을 작성하여 보내주시기 바랍니다.",
+    "intro2": "빠른 시일 내에 답변드리겠습니다.",
+    "name": "이름",
+    "namePlaceholder": "이름을 입력하세요",
+    "email": "이메일",
+    "emailPlaceholder": "이메일을 입력하세요",
+    "subject": "제목",
+    "subjectPlaceholder": "문의 제목을 입력하세요",
+    "message": "문의 내용",
+    "messagePlaceholder": "문의 내용을 입력하세요",
+    "submit": "문의하기",
+    "submitSuccess": "문의가 접수되었습니다. 감사합니다.",
+    "contactInfo": "연락처 정보",
+    "emailLabel": "이메일:",
+    "emailValue": "문의하기 양식을 통해 연락주시기 바랍니다.",
+    "responseTime": "응답 시간:",
+    "responseTimeValue": "평일 기준 1-2일 이내 답변드립니다.",
+    "note": "참고:",
+    "noteValue": "계산기 관련 문의사항이나 오류 신고, 개선 제안 등을 환영합니다."
+  }
+}
+

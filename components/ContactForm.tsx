@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function ContactForm() {
+  const t = useTranslations('contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,7 +15,7 @@ export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (typeof window !== 'undefined') {
-      alert('문의가 접수되었습니다. 감사합니다.');
+      alert(t('submitSuccess'));
     }
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
@@ -29,15 +31,15 @@ export default function ContactForm() {
     <>
       <div className="bg-white rounded-lg shadow-md p-8 mb-8">
         <p className="text-gray-700 mb-6">
-          생활 계산기 서비스에 대한 문의사항이나 건의사항이 있으시면 아래 양식을 작성하여 보내주시기 바랍니다.
+          {t('intro')}
           <br />
-          빠른 시일 내에 답변드리겠습니다.
+          {t('intro2')}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-              이름
+              {t('name')}
             </label>
             <input
               type="text"
@@ -47,13 +49,13 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="이름을 입력하세요"
+              placeholder={t('namePlaceholder')}
             />
           </div>
 
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-              이메일
+              {t('email')}
             </label>
             <input
               type="email"
@@ -63,13 +65,13 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="이메일을 입력하세요"
+              placeholder={t('emailPlaceholder')}
             />
           </div>
 
           <div>
             <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-              제목
+              {t('subject')}
             </label>
             <input
               type="text"
@@ -79,13 +81,13 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="문의 제목을 입력하세요"
+              placeholder={t('subjectPlaceholder')}
             />
           </div>
 
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-              문의 내용
+              {t('message')}
             </label>
             <textarea
               id="message"
@@ -95,7 +97,7 @@ export default function ContactForm() {
               required
               rows={8}
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="문의 내용을 입력하세요"
+              placeholder={t('messagePlaceholder')}
             />
           </div>
 
@@ -103,22 +105,22 @@ export default function ContactForm() {
             type="submit"
             className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium text-lg"
           >
-            문의하기
+            {t('submit')}
           </button>
         </form>
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">연락처 정보</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('contactInfo')}</h2>
         <div className="space-y-4 text-gray-700">
           <p>
-            <strong>이메일:</strong> 문의하기 양식을 통해 연락주시기 바랍니다.
+            <strong>{t('emailLabel')}</strong> {t('emailValue')}
           </p>
           <p>
-            <strong>응답 시간:</strong> 평일 기준 1-2일 이내 답변드립니다.
+            <strong>{t('responseTime')}</strong> {t('responseTimeValue')}
           </p>
           <p>
-            <strong>참고:</strong> 계산기 관련 문의사항이나 오류 신고, 개선 제안 등을 환영합니다.
+            <strong>{t('note')}</strong> {t('noteValue')}
           </p>
         </div>
       </div>

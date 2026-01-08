@@ -2,39 +2,44 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('nav');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCalcMenuOpen, setIsCalcMenuOpen] = useState(false);
 
   const calculators = [
-    { href: '/salary', label: '연봉 실수령액' },
-    { href: '/severance', label: '퇴직금 계산기' },
-    { href: '/unemployment', label: '실업급여 계산기' },
-    { href: '/electric', label: '전기요금 계산기' },
-    { href: '/gas', label: '가스요금 계산기' },
-    { href: '/military-discharge', label: '전역일 계산기' },
-    { href: '/baby-days', label: '아기 태어난지' },
+    { href: `/${locale}/salary`, label: t('salary') },
+    { href: `/${locale}/severance`, label: t('severance') },
+    { href: `/${locale}/unemployment`, label: t('unemployment') },
+    { href: `/${locale}/electric`, label: t('electric') },
+    { href: `/${locale}/gas`, label: t('gas') },
+    { href: `/${locale}/military-discharge`, label: t('militaryDischarge') },
+    { href: `/${locale}/baby-days`, label: t('babyDays') },
   ];
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-xl font-bold text-blue-600 hover:text-blue-700">
-            생활 계산기
+          <Link href={`/${locale}`} className="text-xl font-bold text-blue-600 hover:text-blue-700">
+            {t('siteName')}
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
             <div className="relative">
               <button
                 onClick={() => setIsCalcMenuOpen(!isCalcMenuOpen)}
                 className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors flex items-center"
               >
-                계산기 목록
+                {t('calculatorList')}
                 <svg
                   className={`ml-1 h-4 w-4 transition-transform ${isCalcMenuOpen ? 'rotate-180' : ''}`}
                   fill="none"

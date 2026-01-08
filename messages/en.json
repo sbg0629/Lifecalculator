@@ -1,0 +1,281 @@
+{
+  "common": {
+    "siteName": "Life Calculator",
+    "description": "Various calculators for daily life.",
+    "calculate": "Calculate",
+    "result": "Result",
+    "adArea": "Advertisement",
+    "currency": " KRW",
+    "days": " days"
+  },
+  "nav": {
+    "siteName": "Life Calculator",
+    "calculatorList": "Calculators",
+    "salary": "Salary Calculator",
+    "severance": "Severance Pay",
+    "unemployment": "Unemployment Benefits",
+    "electric": "Electric Bill",
+    "gas": "Gas Bill",
+    "militaryDischarge": "Military Discharge",
+    "babyDays": "Baby Age"
+  },
+  "home": {
+    "title": "Life Calculator",
+    "subtitle": "Various calculators for daily life in one place.",
+    "intro": "Get accurate results with simple inputs without complex formulas.",
+    "category": {
+      "salaryWelfare": "Salary & Benefits",
+      "livingCosts": "Living Costs",
+      "lifeCalc": "Life Calculator"
+    },
+    "calculators": {
+      "salary": {
+        "title": "Salary Calculator",
+        "description": "Calculate your monthly take-home pay after deducting 4 major insurances and income tax."
+      },
+      "severance": {
+        "title": "Severance Pay Calculator",
+        "description": "Calculate your expected severance pay by entering average wage and years of service."
+      },
+      "unemployment": {
+        "title": "Unemployment Benefits Calculator",
+        "description": "Calculate your expected unemployment benefits by entering average wage and service period."
+      },
+      "electric": {
+        "title": "Electric Bill Calculator",
+        "description": "Calculate your expected electric bill by entering usage amount."
+      },
+      "gas": {
+        "title": "Gas Bill Calculator",
+        "description": "Calculate your expected gas bill by entering usage amount."
+      },
+      "militaryDischarge": {
+        "title": "Military Discharge Date Calculator",
+        "description": "Calculate your expected discharge date and service progress by entering enlistment date and branch."
+      },
+      "babyDays": {
+        "title": "Baby Age Calculator",
+        "description": "Calculate how many days, weeks, and months old your baby is by entering the birth date."
+      }
+    }
+  },
+  "salary": {
+    "title": "Salary Calculator",
+    "description": "Calculate your monthly take-home pay after deducting 4 major insurances and income tax.",
+    "salaryType": "Annual/Monthly Salary",
+    "annualSalary": "Annual Salary (excluding severance)",
+    "monthlySalary": "Monthly Salary",
+    "amount": "Amount",
+    "nonTaxable": "Non-taxable Amount",
+    "nonTaxableHint": "KRW (default: 100,000)",
+    "dependents": "Dependents",
+    "dependentsHint": "people (including self)",
+    "children": "Children under 20",
+    "childrenHint": "people",
+    "calculateButton": "Calculate Take-home Pay",
+    "note": "Calculation is based on the National Tax Service simplified tax table.",
+    "enterAmount": "Please enter amount.",
+    "enterValidAmount": "Please enter a valid amount.",
+    "error": "An error occurred during calculation. Please try again.",
+    "result": {
+      "monthlySalary": "Monthly Salary",
+      "annualSalary": "Annual Salary",
+      "nonTaxableAmount": "Non-taxable Amount",
+      "nationalPension": "National Pension (4.5%)",
+      "healthInsurance": "Health Insurance (3.545%)",
+      "employmentInsurance": "Employment Insurance (0.9%)",
+      "industrialAccidentInsurance": "Industrial Accident Insurance (0.6%)",
+      "incomeTax": "Income Tax",
+      "localIncomeTax": "Local Income Tax",
+      "totalDeduction": "Total Deduction",
+      "netMonthlySalary": "Monthly Take-home Pay"
+    }
+  },
+  "severance": {
+    "wageType": "Wage Type",
+    "averageWage": "Average Wage",
+    "monthlySalary": "Monthly Salary",
+    "averageWageDesc": "Average Wage: Total wages for the 3 months before retirement date divided by the total number of days in that period",
+    "monthlySalaryDesc": "Monthly Salary: Recent monthly salary (used as an approximation for average wage calculation)",
+    "wageInput": "Average Wage (KRW)",
+    "monthlyWageInput": "Monthly Salary (KRW)",
+    "yearsOfService": "Years of Service",
+    "years": "years",
+    "months": "months",
+    "yearsHint": "Decimal input possible (e.g., 3.5 years or 3 years 6 months)",
+    "calculateButton": "Calculate",
+    "enterWage": "Please enter wage.",
+    "enterValidWage": "Please enter a valid wage.",
+    "enterYears": "Please enter years of service.",
+    "error": "An error occurred during calculation. Please try again.",
+    "result": {
+      "title": "Calculation Result",
+      "averageWage": "Average Wage",
+      "yearsOfService": "Years of Service",
+      "formula": "Formula",
+      "formulaText": "Average Wage × 30 days × Years of Service",
+      "detail": "Detailed Calculation",
+      "severancePay": "Expected Severance Pay",
+      "note": "Note:",
+      "noteText": "Calculation is based on Article 34 of the Labor Standards Act.",
+      "noteText2": "Actual severance pay may vary depending on how average wage is calculated, whether various allowances are included, etc."
+    }
+  },
+  "unemployment": {
+    "averageWage": "Average Wage (KRW)",
+    "averageWageHint": "Enter the average wage for the last 3 months",
+    "servicePeriod": "Service Period",
+    "years": "years",
+    "months": "months",
+    "yearsHint": "Decimal input possible (e.g., 3.5 years or 3 years 6 months)",
+    "calculateButton": "Calculate",
+    "enterWage": "Please enter average wage.",
+    "enterValidWage": "Please enter a valid average wage.",
+    "enterPeriod": "Please enter service period.",
+    "error": "An error occurred during calculation. Please try again.",
+    "result": {
+      "title": "Calculation Result",
+      "dailyWage": "Daily Average Wage",
+      "dailyBenefit": "Daily Unemployment Benefit",
+      "benefitRate": "Benefit Rate",
+      "benefitRateText": "60% of daily average wage (minimum 60,120 KRW, maximum 66,000 KRW)",
+      "monthlyBenefit": "Monthly Expected Unemployment Benefit",
+      "paymentDays": "Payment Period",
+      "totalBenefit": "Total Expected Unemployment Benefit",
+      "periodGuide": "Payment Period Guide:",
+      "period1": "Less than 1 year: 90 days",
+      "period2": "1 year or more but less than 3 years: 120 days",
+      "period3": "3 years or more but less than 5 years: 150 days",
+      "period4": "5 years or more but less than 10 years: 180 days",
+      "period5": "10 years or more: 240 days"
+    }
+  },
+  "electric": {
+    "usage": "Usage (kWh)",
+    "usageHint": "Enter electricity usage in kWh",
+    "calculateButton": "Calculate",
+    "enterUsage": "Please enter a valid usage amount.",
+    "error": "An error occurred during calculation. Please try again.",
+    "result": {
+      "title": "Calculation Result",
+      "basicCharge": "Basic Charge",
+      "energyCharge": "Energy Charge",
+      "vat": "VAT",
+      "fund": "Power Industry Fund",
+      "total": "Expected Electric Bill",
+      "rateGuide": "Energy Charge Rates:",
+      "rate1": "200kWh or less: 120.7 KRW per kWh",
+      "rate2": "201~400kWh: 214.6 KRW per kWh",
+      "rate3": "401kWh or more: 307.3 KRW per kWh",
+      "note": "Note:",
+      "noteText": "Calculated based on residential low voltage. Actual bill may vary depending on contract power, usage patterns, etc."
+    }
+  },
+  "gas": {
+    "usage": "Usage (m³)",
+    "usageHint": "Enter gas usage in m³",
+    "calculateButton": "Calculate",
+    "enterUsage": "Please enter a valid usage amount.",
+    "error": "An error occurred during calculation. Please try again.",
+    "result": {
+      "title": "Calculation Result",
+      "basicCharge": "Basic Charge",
+      "usageCharge": "Usage Charge",
+      "vat": "VAT",
+      "total": "Expected Gas Bill",
+      "rateGuide": "Usage Charge Rates:",
+      "rate1": "20m³ or less: 730 KRW per m³",
+      "rate2": "21~100m³: 850 KRW per m³",
+      "rate3": "101~500m³: 1,020 KRW per m³",
+      "rate4": "501m³ or more: 1,200 KRW per m³",
+      "note": "Note:",
+      "noteText": "Calculated based on residential city gas. Actual bill may vary depending on region, gas company, usage patterns, etc."
+    }
+  },
+  "militaryDischarge": {
+    "title": "Military Discharge Date Calculator",
+    "description": "Calculate your expected discharge date and service progress by entering your enlistment date and branch.",
+    "serviceType": "Branch",
+    "army": "Army",
+    "navy": "Navy",
+    "airforce": "Air Force",
+    "marines": "Marines",
+    "months": "months",
+    "enlistDate": "Enlistment Date",
+    "enlistDateHint": "Select your enlistment date",
+    "calculateButton": "Calculate Discharge Date",
+    "enterDate": "Please enter enlistment date.",
+    "enterValidDate": "Please enter a valid date.",
+    "error": "An error occurred during calculation. Please try again.",
+    "result": {
+      "title": "Calculation Result",
+      "dischargeDate": "Expected Discharge Date",
+      "daysServed": "Days Served",
+      "daysRemaining": "Days Remaining",
+      "progress": "Service Progress",
+      "note": "Note:",
+      "noteText": "'s service period is months.",
+      "noteText2": "Actual discharge date may vary depending on leave, sick leave, etc."
+    }
+  },
+  "babyDays": {
+    "title": "Baby Age Calculator",
+    "description": "Calculate how many days, weeks, and months old your baby is by entering the birth date.",
+    "birthDate": "Birth Date",
+    "birthDateHint": "Select your baby's birth date",
+    "daysOld": "Age",
+    "days": "days",
+    "weeks": "weeks",
+    "months": "months",
+    "years": "years",
+    "next100Days": "100 Days",
+    "nextBirthday": "Next Birthday",
+    "result": {
+      "title": "Calculation Result",
+      "daysOld": "Age",
+      "days": "days",
+      "weeks": "weeks",
+      "months": "months",
+      "years": "years",
+      "next100Days": "100 Days",
+      "nextBirthday": "Next Birthday",
+      "note": "Note:",
+      "noteText": "Calculation is approximate, and actual age is calculated based on birth date.",
+      "noteText2": "100 Days and birthday are traditional Korean milestones."
+    }
+  },
+  "footer": {
+    "title": "Life Calculator",
+    "description": "A service that provides various calculators necessary for daily life.",
+    "calculators": "Calculators",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact Us",
+    "copyright": "All rights reserved."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Please send us any inquiries or suggestions about the Life Calculator service. We will reply as soon as possible.",
+    "intro": "If you have any inquiries or suggestions about the Life Calculator service, please fill out the form below and send it to us.",
+    "intro2": "We will reply as soon as possible.",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "subject": "Subject",
+    "subjectPlaceholder": "Enter inquiry subject",
+    "message": "Message",
+    "messagePlaceholder": "Enter your inquiry",
+    "submit": "Submit",
+    "submitSuccess": "Your inquiry has been received. Thank you.",
+    "contactInfo": "Contact Information",
+    "emailLabel": "Email:",
+    "emailValue": "Please contact us through the contact form.",
+    "responseTime": "Response Time:",
+    "responseTimeValue": "We will reply within 1-2 business days.",
+    "note": "Note:",
+    "noteValue": "We welcome inquiries about calculators, error reports, improvement suggestions, etc."
+  }
+}
+

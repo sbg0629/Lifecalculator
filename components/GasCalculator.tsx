@@ -1,8 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function GasCalculator() {
+  const t = useTranslations('gas');
+  const commonT = useTranslations('common');
   const [usage, setUsage] = useState<string>('');
   const [result, setResult] = useState<{
     basicCharge: number;
@@ -16,7 +19,7 @@ export default function GasCalculator() {
       const cleanValue = usage.replace(/,/g, '').trim();
       if (!cleanValue) {
         if (typeof window !== 'undefined') {
-          alert('올바른 사용량을 입력해주세요.');
+          alert(t('enterUsage'));
         }
         return;
       }
@@ -25,7 +28,7 @@ export default function GasCalculator() {
 
       if (isNaN(m3) || m3 <= 0) {
         if (typeof window !== 'undefined') {
-          alert('올바른 사용량을 입력해주세요.');
+          alert(t('enterUsage'));
         }
         return;
       }
@@ -67,7 +70,7 @@ export default function GasCalculator() {
     } catch (error) {
       console.error('계산 중 오류 발생:', error);
       if (typeof window !== 'undefined') {
-        alert('계산 중 오류가 발생했습니다. 다시 시도해주세요.');
+        alert(t('error'));
       }
     }
   };
@@ -77,10 +80,14 @@ export default function GasCalculator() {
       return '0';
     }
     try {
-      return Math.round(num).toLocaleString('ko-KR');
+      return Math.round(num).toLocaleString();
     } catch {
       return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
+  };
+  
+  const getCurrency = () => {
+    return commonT('currency');
   };
 
   return (
@@ -88,7 +95,7 @@ export default function GasCalculator() {
       <div className="bg-white rounded-lg shadow-md p-8 mb-8">
         <div className="mb-6">
           <label htmlFor="usage" className="block text-sm font-medium text-gray-700 mb-2">
-            사용량 (m³)
+            {t('usage')}
           </label>
           <input
             type="text"
@@ -102,7 +109,7 @@ export default function GasCalculator() {
             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
           />
           <p className="mt-2 text-sm text-gray-500">
-            가스 사용량을 m³ 단위로 입력하세요
+            {t('usageHint')}
           </p>
         </div>
 
@@ -110,52 +117,52 @@ export default function GasCalculator() {
           onClick={calculate}
           className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium text-lg"
         >
-          계산하기
+          {t('calculateButton')}
         </button>
       </div>
 
       {result !== null && (
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">계산 결과</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">기본료</span>
+              <span className="text-gray-700">{t('result.basicCharge')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {formatNumber(result.basicCharge)}원
+                {formatNumber(result.basicCharge)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">사용료</span>
+              <span className="text-gray-700">{t('result.usageCharge')}</span>
               <span className="text-lg font-semibold text-gray-900">
-                {formatNumber(result.usageCharge)}원
+                {formatNumber(result.usageCharge)}{getCurrency()}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">부가가치세 (VAT)</span>
+              <span className="text-gray-700">{t('result.vat')}</span>
               <span className="text-gray-900">
-                {formatNumber(result.vat)}원
+                {formatNumber(result.vat)}{getCurrency()}
               </span>
             </div>
             <div className="bg-blue-50 rounded-md p-6 mt-4">
               <div className="text-center">
-                <p className="text-gray-700 mb-2">예상 가스요금</p>
+                <p className="text-gray-700 mb-2">{t('result.total')}</p>
                 <p className="text-4xl font-bold text-blue-600">
-                  {formatNumber(result.total)}원
+                  {formatNumber(result.total)}{getCurrency()}
                 </p>
               </div>
             </div>
             <div className="mt-4 p-4 bg-gray-50 rounded-md">
               <p className="text-sm text-gray-600 mb-2">
-                <strong>사용료 구간:</strong>
+                <strong>{t('result.rateGuide')}</strong>
               </p>
               <ul className="text-sm text-gray-600 list-disc list-inside space-y-1">
-                <li>20m³ 이하: m³당 730원</li>
-                <li>21~100m³: m³당 850원</li>
-                <li>101~500m³: m³당 1,020원</li>
-                <li>501m³ 이상: m³당 1,200원</li>
+                <li>{t('result.rate1')}</li>
+                <li>{t('result.rate2')}</li>
+                <li>{t('result.rate3')}</li>
+                <li>{t('result.rate4')}</li>
               </ul>
               <p className="text-sm text-gray-600 mt-3">
-                <strong>참고:</strong> 주택용 도시가스 기준으로 계산되었습니다. 실제 요금은 지역, 가스회사, 사용 패턴 등에 따라 달라질 수 있습니다.
+                <strong>{t('result.note')}</strong> {t('result.noteText')}
               </p>
             </div>
           </div>
