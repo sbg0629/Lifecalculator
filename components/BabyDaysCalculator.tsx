@@ -30,8 +30,9 @@ export default function BabyDaysCalculator() {
       today.setHours(0, 0, 0, 0);
       birth.setHours(0, 0, 0, 0);
 
-      // 태어난지 며칠째인지 계산
-      const daysOld = Math.floor((today.getTime() - birth.getTime()) / (1000 * 60 * 60 * 24));
+      // 태어난지 며칠째인지 계산 (태어난 날 = 1일째)
+      const daysDiff = Math.floor((today.getTime() - birth.getTime()) / (1000 * 60 * 60 * 24));
+      const daysOld = daysDiff + 1; // 태어난 날을 1일째로 계산
 
       if (daysOld < 0) {
         setResult(null);
