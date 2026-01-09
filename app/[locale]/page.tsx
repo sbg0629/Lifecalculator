@@ -50,6 +50,24 @@ export default async function HomePage({
           description: t('calculators.unemployment.description'),
           icon: '📋',
         },
+        {
+          href: `/${locale}/weekly-rest`,
+          title: t('calculators.weeklyRest.title'),
+          description: t('calculators.weeklyRest.description'),
+          icon: '🛌',
+        },
+        {
+          href: `/${locale}/annual-leave`,
+          title: t('calculators.annualLeave.title'),
+          description: t('calculators.annualLeave.description'),
+          icon: '🏖️',
+        },
+        {
+          href: `/${locale}/overtime`,
+          title: t('calculators.overtime.title'),
+          description: t('calculators.overtime.description'),
+          icon: '🌙',
+        },
       ],
     },
     {
@@ -67,6 +85,58 @@ export default async function HomePage({
           description: t('calculators.gas.description'),
           icon: '🔥',
         },
+        {
+          href: `/${locale}/water`,
+          title: t('calculators.water.title'),
+          description: t('calculators.water.description'),
+          icon: '💧',
+        },
+        {
+          href: `/${locale}/management`,
+          title: t('calculators.management.title'),
+          description: t('calculators.management.description'),
+          icon: '🏢',
+        },
+      ],
+    },
+    {
+      category: t('category.finance'),
+      calculators: [
+        {
+          href: `/${locale}/savings`,
+          title: t('calculators.savings.title'),
+          description: t('calculators.savings.description'),
+          icon: '🏦',
+        },
+        {
+          href: `/${locale}/loan`,
+          title: t('calculators.loan.title'),
+          description: t('calculators.loan.description'),
+          icon: '💳',
+        },
+        {
+          href: `/${locale}/goal-savings`,
+          title: t('calculators.goalSavings.title'),
+          description: t('calculators.goalSavings.description'),
+          icon: '🎯',
+        },
+      ],
+    },
+    {
+      category: t('category.tax'),
+      calculators: [
+        {
+          href: `/${locale}/vat`,
+          title: t('calculators.vat.title'),
+          description: t('calculators.vat.description'),
+          icon: '🧾',
+        },
+        {
+          href: `/${locale}/income-tax`,
+          title: t('calculators.incomeTax.title'),
+          description: t('calculators.incomeTax.description'),
+          icon: '📊',
+        },
       ],
     },
     {
@@ -83,6 +153,24 @@ export default async function HomePage({
           title: t('calculators.babyDays.title'),
           description: t('calculators.babyDays.description'),
           icon: '👶',
+        },
+        {
+          href: `/${locale}/dday`,
+          title: t('calculators.dday.title'),
+          description: t('calculators.dday.description'),
+          icon: '📅',
+        },
+        {
+          href: `/${locale}/age`,
+          title: t('calculators.age.title'),
+          description: t('calculators.age.description'),
+          icon: '🎂',
+        },
+        {
+          href: `/${locale}/bmi`,
+          title: t('calculators.bmi.title'),
+          description: t('calculators.bmi.description'),
+          icon: '⚖️',
         },
       ],
     },
@@ -114,7 +202,7 @@ export default async function HomePage({
                 <Link
                   key={calc.href}
                   href={calc.href}
-                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all hover:scale-105"
                 >
                   <div className="text-4xl mb-4">{calc.icon}</div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">

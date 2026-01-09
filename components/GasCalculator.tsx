@@ -33,7 +33,7 @@ export default function GasCalculator() {
         return;
       }
 
-      // 주택용 도시가스 요금 계산 (2024년 기준)
+      // 주택용 도시가스 요금 계산 (2026년 기준)
       let basicCharge = 0;
       if (m3 <= 20) {
         basicCharge = 1200;
@@ -92,7 +92,7 @@ export default function GasCalculator() {
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
         <div className="mb-6">
           <label htmlFor="usage" className="block text-sm font-medium text-gray-700 mb-2">
             {t('usage')}
@@ -122,7 +122,7 @@ export default function GasCalculator() {
       </div>
 
       {result !== null && (
-        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2 border-b">

@@ -32,7 +32,7 @@ export default async function UnemploymentPage({
   const { locale } = await params;
   
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
           {locale === 'ko' ? '실업급여 계산기' : 'Unemployment Benefits Calculator'}
@@ -40,11 +40,11 @@ export default async function UnemploymentPage({
 
         <UnemploymentCalculator />
 
-        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4 transition-colors">
             {locale === 'ko' ? '실업급여 계산기 안내' : 'Unemployment Benefits Calculator Guide'}
           </h2>
-          <div className="prose max-w-none text-gray-700 space-y-4">
+          <div className="prose max-w-none text-gray-700 dark:text-gray-300 space-y-4 transition-colors">
             {locale === 'ko' ? (
               <>
                 <p>
@@ -105,11 +105,12 @@ export default async function UnemploymentPage({
           </div>
         </div>
 
-        <div className="ad-placeholder bg-gray-200 rounded-lg p-8 text-center text-gray-500 mb-8">
+        <div className="ad-placeholder bg-gray-200 dark:bg-gray-700 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400 mb-8 transition-colors">
           {locale === 'ko' ? '광고 영역' : 'Advertisement'}
         </div>
       </div>
     </div>
   );
 }
+
 

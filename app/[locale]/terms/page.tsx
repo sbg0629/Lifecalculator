@@ -31,7 +31,7 @@ export default async function TermsPage({
   const { locale } = await params;
   
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">
           {locale === 'ko' ? '이용약관' : 'Terms of Use'}
@@ -137,7 +137,7 @@ export default async function TermsPage({
               <section>
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">부칙</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  이 약관은 2024년 1월 1일부터 시행됩니다.
+                  이 약관은 2026년 1월 1일부터 시행됩니다.
                 </p>
               </section>
             </>
@@ -249,7 +249,7 @@ export default async function TermsPage({
               <section>
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Supplementary Provisions</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  These terms take effect from January 1, 2024.
+                  These terms take effect from January 1, 2026.
                 </p>
               </section>
             </>
@@ -259,4 +259,5 @@ export default async function TermsPage({
     </div>
   );
 }
+
 

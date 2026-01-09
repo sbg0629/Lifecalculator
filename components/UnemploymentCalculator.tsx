@@ -56,7 +56,7 @@ export default function UnemploymentCalculator() {
       const dailyWage = wage / 30;
 
       // 일일 실업급여액 계산
-      // 일평균임금의 60%, 최소 60,120원, 최대 66,000원 (2024년 기준)
+      // 일평균임금의 60%, 최소 60,120원, 최대 66,000원 (2026년 기준)
       const calculatedBenefit = dailyWage * 0.6;
       const dailyBenefit = Math.min(Math.max(calculatedBenefit, 60120), 66000);
 
@@ -107,7 +107,7 @@ export default function UnemploymentCalculator() {
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
         <div className="mb-6">
           <label htmlFor="wage" className="block text-sm font-medium text-gray-700 mb-2">
             {t('averageWage')}
@@ -180,7 +180,7 @@ export default function UnemploymentCalculator() {
       </div>
 
       {result && (
-        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2 border-b">

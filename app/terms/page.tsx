@@ -109,7 +109,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">부칙</h2>
             <p className="text-gray-700 leading-relaxed">
-              이 약관은 2024년 1월 1일부터 시행됩니다.
+              이 약관은 2026년 1월 1일부터 시행됩니다.
             </p>
           </section>
         </div>

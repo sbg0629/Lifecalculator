@@ -14,10 +14,24 @@
     "salary": "Salary Calculator",
     "severance": "Severance Pay",
     "unemployment": "Unemployment Benefits",
+    "weeklyRest": "Weekly Rest Pay",
+    "annualLeave": "Annual Leave Pay",
+    "overtime": "Overtime Pay",
     "electric": "Electric Bill",
     "gas": "Gas Bill",
+    "water": "Water Bill",
+    "management": "Management Fee",
+    "savings": "Savings/Deposit",
+    "loan": "Loan Calculator",
+    "goalSavings": "Goal Savings",
+    "vat": "VAT Calculator",
+    "incomeTax": "Income Tax",
     "militaryDischarge": "Military Discharge",
-    "babyDays": "Baby Age"
+    "babyDays": "Baby Age",
+    "dday": "D-Day Calculator",
+    "age": "Age Calculator",
+    "bmi": "BMI Calculator",
+    "exchange": "Exchange Rate"
   },
   "home": {
     "title": "Life Calculator",
@@ -26,6 +40,8 @@
     "category": {
       "salaryWelfare": "Salary & Benefits",
       "livingCosts": "Living Costs",
+      "finance": "Finance",
+      "tax": "Tax",
       "lifeCalc": "Life Calculator"
     },
     "calculators": {
@@ -56,6 +72,62 @@
       "babyDays": {
         "title": "Baby Age Calculator",
         "description": "Calculate how many days, weeks, and months old your baby is by entering the birth date."
+      },
+      "weeklyRest": {
+        "title": "Weekly Rest Pay Calculator",
+        "description": "Calculate weekly rest pay for 40-hour work week."
+      },
+      "annualLeave": {
+        "title": "Annual Leave Pay Calculator",
+        "description": "Calculate unused annual leave pay."
+      },
+      "overtime": {
+        "title": "Overtime Pay Calculator",
+        "description": "Calculate overtime pay."
+      },
+      "water": {
+        "title": "Water Bill Calculator",
+        "description": "Calculate your expected water bill by entering usage amount."
+      },
+      "management": {
+        "title": "Management Fee Calculator",
+        "description": "Calculate apartment management fees."
+      },
+      "savings": {
+        "title": "Savings/Deposit Calculator",
+        "description": "Calculate maturity amount and interest for savings or deposits."
+      },
+      "loan": {
+        "title": "Loan Calculator",
+        "description": "Calculate loan repayment amount and interest."
+      },
+      "goalSavings": {
+        "title": "Goal Savings Calculator",
+        "description": "Calculate monthly payment needed to reach your savings goal."
+      },
+      "vat": {
+        "title": "VAT Calculator",
+        "description": "Calculate supply price and VAT."
+      },
+      "incomeTax": {
+        "title": "Income Tax Calculator",
+        "description": "Calculate income tax simply."
+      },
+      "dday": {
+        "title": "D-Day Calculator",
+        "description": "Calculate days remaining until a specific date."
+      },
+      "age": {
+        "title": "Age Calculator",
+        "description": "Calculate age based on birth date."
+      },
+      "bmi": {
+        "title": "BMI Calculator",
+        "description": "Calculate body mass index by entering weight and height."
+      },
+      "exchange": {
+        "title": "Exchange Rate Calculator",
+        "description": "Calculate exchange rates for major currencies."
       }
     }
   },
@@ -92,33 +164,28 @@
     }
   },
   "severance": {
-    "wageType": "Wage Type",
-    "averageWage": "Average Wage",
-    "monthlySalary": "Monthly Salary",
-    "averageWageDesc": "Average Wage: Total wages for the 3 months before retirement date divided by the total number of days in that period",
-    "monthlySalaryDesc": "Monthly Salary: Recent monthly salary (used as an approximation for average wage calculation)",
-    "wageInput": "Average Wage (KRW)",
-    "monthlyWageInput": "Monthly Salary (KRW)",
-    "yearsOfService": "Years of Service",
-    "years": "years",
-    "months": "months",
-    "yearsHint": "Decimal input possible (e.g., 3.5 years or 3 years 6 months)",
-    "calculateButton": "Calculate",
-    "enterWage": "Please enter wage.",
-    "enterValidWage": "Please enter a valid wage.",
-    "enterYears": "Please enter years of service.",
+    "requiredInput": "Required Input",
+    "optionalInput": "Optional Input",
+    "startDate": "Start Date",
+    "endDate": "End Date (Last Working Day)",
+    "monthlySalary": "Monthly Salary (Pre-tax)",
+    "sameFor3Months": "Same for 3 months before resignation",
+    "add1Million": "+1M",
+    "add100K": "+100K",
+    "annualBonus": "Annual Bonus",
+    "annualLeaveAllowance": "Annual Leave Allowance",
+    "enterStartDate": "Please enter start date.",
+    "enterEndDate": "Please enter end date.",
+    "enterValidDate": "Please enter a valid date.",
+    "enterSalary": "Please enter monthly salary.",
+    "enterValidSalary": "Please enter a valid monthly salary.",
     "error": "An error occurred during calculation. Please try again.",
     "result": {
-      "title": "Calculation Result",
-      "averageWage": "Average Wage",
-      "yearsOfService": "Years of Service",
-      "formula": "Formula",
-      "formulaText": "Average Wage × 30 days × Years of Service",
-      "detail": "Detailed Calculation",
-      "severancePay": "Expected Severance Pay",
-      "note": "Note:",
-      "noteText": "Calculation is based on Article 34 of the Labor Standards Act.",
-      "noteText2": "Actual severance pay may vary depending on how average wage is calculated, whether various allowances are included, etc."
+      "severancePay": "Estimated Severance Pay",
+      "dailyAverageWage": "Daily Average Wage",
+      "copyResult": "Copy Result",
+      "reset": "Reset",
+      "copySuccess": "Result copied to clipboard."
     }
   },
   "unemployment": {
@@ -253,6 +320,290 @@
     "terms": "Terms of Use",
     "contact": "Contact Us",
     "copyright": "All rights reserved."
+  },
+  "weeklyRest": {
+    "title": "Weekly Rest Pay Calculator",
+    "description": "Calculate weekly rest pay for 40-hour work week. (2026 standard)",
+    "weeklyHours": "Weekly Hours",
+    "dailyWage": "Daily Wage",
+    "daysWorked": "Days Worked",
+    "calculateButton": "Calculate",
+    "enterHours": "Please enter weekly hours.",
+    "enterDailyWage": "Please enter daily wage.",
+    "enterDays": "Please enter days worked.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "weeklyRestPay": "Weekly Rest Pay",
+      "formula": "Formula: (Daily Wage × Weekly Work Days) ÷ Weekly Scheduled Days × 1 Day",
+      "note": "For 40-hour work week, weekly rest pay is equivalent to 1 day divided by weekly scheduled work days."
+    }
+  },
+  "annualLeave": {
+    "title": "Annual Leave Pay Calculator",
+    "description": "Calculate unused annual leave pay. (2026 standard)",
+    "monthlySalary": "Monthly Salary",
+    "unusedDays": "Unused Annual Leave Days",
+    "calculateButton": "Calculate",
+    "enterSalary": "Please enter monthly salary.",
+    "enterDays": "Please enter unused annual leave days.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "annualLeavePay": "Annual Leave Pay",
+      "formula": "Formula: (Monthly Salary ÷ Monthly Scheduled Days) × Unused Annual Leave Days",
+      "note": "Annual leave pay is equivalent to average wage."
+    }
+  },
+  "overtime": {
+    "title": "Overtime Pay Calculator",
+    "description": "Calculate overtime pay. (2026 standard)",
+    "dailyWage": "Daily Wage",
+    "overtimeHours": "Overtime Hours",
+    "calculateButton": "Calculate",
+    "enterDailyWage": "Please enter daily wage.",
+    "enterHours": "Please enter overtime hours.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "overtimePay": "Overtime Pay",
+      "hourlyWage": "Hourly Wage",
+      "formula": "Formula: (Daily Wage ÷ 8 hours) × 1.5 × Overtime Hours",
+      "note": "Overtime pay is 1.5 times hourly wage or 50% added to daily wage."
+    }
+  },
+  "water": {
+    "title": "Water Bill Calculator",
+    "description": "Calculate your expected water bill by entering usage amount. (2026 standard)",
+    "usage": "Usage (㎥)",
+    "usageHint": "Enter water usage in ㎥",
+    "calculateButton": "Calculate",
+    "enterUsage": "Please enter a valid usage amount.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "basicCharge": "Basic Charge",
+      "usageCharge": "Usage Charge",
+      "vat": "VAT",
+      "total": "Expected Water Bill",
+      "rateGuide": "Usage Charge Rates:",
+      "rate1": "20㎥ or less: 330 KRW per ㎥",
+      "rate2": "21~50㎥: 550 KRW per ㎥",
+      "rate3": "51~100㎥: 880 KRW per ㎥",
+      "rate4": "101~200㎥: 1,210 KRW per ㎥",
+      "rate5": "201㎥ or more: 1,650 KRW per ㎥",
+      "note": "Note:",
+      "noteText": "Calculated based on residential water. Actual bill may vary depending on region."
+    }
+  },
+  "management": {
+    "title": "Management Fee Calculator",
+    "description": "Calculate apartment management fees. (2026 standard)",
+    "area": "Exclusive Area (㎡)",
+    "areaHint": "Enter apartment exclusive area in ㎡",
+    "managementType": "Management Fee Type",
+    "basic": "Basic Management Fee",
+    "comprehensive": "Comprehensive Management Fee",
+    "calculateButton": "Calculate",
+    "enterArea": "Please enter exclusive area.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "basicFee": "Basic Management Fee",
+      "elevatorFee": "Elevator Maintenance Fee",
+      "securityFee": "Security Fee",
+      "cleaningFee": "Cleaning Fee",
+      "lightingFee": "Lighting Fee",
+      "repairFee": "Repair Fee",
+      "total": "Expected Management Fee",
+      "note": "Note:",
+      "noteText": "This is an approximate calculation. Actual management fee may vary depending on apartment size, facilities, etc."
+    }
+  },
+  "savings": {
+    "title": "Savings/Deposit Calculator",
+    "description": "Calculate maturity amount and interest for savings or deposits. (2026 standard)",
+    "type": "Product Type",
+    "savings": "Savings",
+    "deposit": "Deposit",
+    "principal": "Principal",
+    "interestRate": "Annual Interest Rate (%)",
+    "period": "Period",
+    "periodMonths": "months",
+    "periodYears": "years",
+    "calculateButton": "Calculate",
+    "enterPrincipal": "Please enter principal.",
+    "enterRate": "Please enter interest rate.",
+    "enterPeriod": "Please enter period.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "principal": "Principal",
+      "interest": "Interest",
+      "total": "Maturity Amount",
+      "monthlyPayment": "Monthly Payment",
+      "note": "Note:",
+      "noteText": "Interest may vary depending on actual bank interest rates and is calculated before tax."
+    }
+  },
+  "loan": {
+    "title": "Loan Calculator",
+    "description": "Calculate loan repayment amount and interest. (2026 standard)",
+    "loanAmount": "Loan Principal",
+    "interestRate": "Annual Interest Rate (%)",
+    "loanPeriod": "Loan Period",
+    "repaymentType": "Repayment Method",
+    "equalPrincipal": "Equal Principal and Interest",
+    "equalPayment": "Equal Principal",
+    "periodYears": "years",
+    "periodMonths": "months",
+    "calculateButton": "Calculate",
+    "enterLoanAmount": "Please enter loan principal.",
+    "enterRate": "Please enter interest rate.",
+    "enterPeriod": "Please enter loan period.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "monthlyPayment": "Monthly Payment",
+      "totalPayment": "Total Payment",
+      "totalInterest": "Total Interest",
+      "firstPayment": "First Month Payment",
+      "lastPayment": "Last Month Payment",
+      "note": "Note:",
+      "noteText": "Actual loan interest may vary depending on credit rating, collateral, etc."
+    }
+  },
+  "goalSavings": {
+    "title": "Goal Savings Calculator",
+    "description": "Calculate monthly payment needed to reach your savings goal. (2026 standard)",
+    "goalAmount": "Goal Amount",
+    "currentAmount": "Current Amount",
+    "interestRate": "Annual Interest Rate (%)",
+    "period": "Period",
+    "periodMonths": "months",
+    "periodYears": "years",
+    "calculateButton": "Calculate",
+    "enterGoal": "Please enter goal amount.",
+    "enterRate": "Please enter interest rate.",
+    "enterPeriod": "Please enter period.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "monthlyPayment": "Monthly Payment",
+      "totalSavings": "Total Savings",
+      "interestEarned": "Expected Interest",
+      "note": "Note:",
+      "noteText": "Interest is calculated with compound interest and may vary depending on actual interest rates."
+    }
+  },
+  "vat": {
+    "title": "VAT Calculator",
+    "description": "Calculate supply price and VAT. (2026 standard)",
+    "inputType": "Input Type",
+    "supplyPrice": "Supply Price (excluding VAT)",
+    "totalPrice": "Supply Price (including VAT)",
+    "amount": "Amount",
+    "calculateButton": "Calculate",
+    "enterAmount": "Please enter amount.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "supplyPrice": "Supply Price",
+      "vat": "VAT (10%)",
+      "totalPrice": "Total Amount",
+      "note": "Note:",
+      "noteText": "VAT is 10% as of 2026."
+    }
+  },
+  "incomeTax": {
+    "title": "Income Tax Calculator",
+    "description": "Calculate income tax simply. (2026 standard)",
+    "annualIncome": "Annual Income",
+    "deductions": "Income Deductions",
+    "calculateButton": "Calculate",
+    "enterIncome": "Please enter annual income.",
+    "enterDeductions": "Please enter income deductions.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "taxableIncome": "Taxable Income",
+      "incomeTax": "Income Tax",
+      "localTax": "Local Income Tax",
+      "totalTax": "Total Tax",
+      "note": "Note:",
+      "noteText": "Calculated based on 2026 income tax rates."
+    }
+  },
+  "dday": {
+    "title": "D-Day Calculator",
+    "description": "Calculate days remaining until a specific date.",
+    "targetDate": "Target Date",
+    "targetDateHint": "Select target date",
+    "calculateButton": "Calculate",
+    "enterDate": "Please enter target date.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "daysRemaining": "Days Remaining",
+      "daysPassed": "Days Passed",
+      "weeksRemaining": "Weeks Remaining",
+      "monthsRemaining": "Months Remaining",
+      "note": "Note:",
+      "noteText": "D-Day is calculated excluding the target date."
+    }
+  },
+  "age": {
+    "title": "Age Calculator",
+    "description": "Calculate age based on birth date.",
+    "birthDate": "Birth Date",
+    "birthDateHint": "Select birth date",
+    "calculateButton": "Calculate",
+    "enterDate": "Please enter birth date.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "age": "Age",
+      "years": "years",
+      "months": "months",
+      "days": "days",
+      "nextBirthday": "Until Next Birthday",
+      "note": "Note:",
+      "noteText": "Age increases by one year after each birthday."
+    }
+  },
+  "bmi": {
+    "title": "BMI Calculator",
+    "description": "Calculate body mass index by entering weight and height.",
+    "height": "Height",
+    "heightCm": "cm",
+    "heightM": "m",
+    "weight": "Weight",
+    "weightKg": "kg",
+    "calculateButton": "Calculate",
+    "enterHeight": "Please enter height.",
+    "enterWeight": "Please enter weight.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "bmi": "BMI",
+      "category": "BMI Category",
+      "underweight": "Underweight",
+      "normal": "Normal",
+      "overweight": "Overweight",
+      "obese": "Obese",
+      "note": "Note:",
+      "noteText": "BMI = Weight(kg) ÷ Height(m)²"
+    }
+  },
+  "exchange": {
+    "title": "Exchange Rate Calculator",
+    "description": "Calculate exchange rates for major currencies. (2026 standard)",
+    "fromCurrency": "From Currency",
+    "toCurrency": "To Currency",
+    "amount": "Amount",
+    "krw": "KRW",
+    "usd": "USD",
+    "eur": "EUR",
+    "jpy": "JPY",
+    "cny": "CNY",
+    "exchangeRate": "Exchange Rate",
+    "calculateButton": "Calculate",
+    "enterAmount": "Please enter amount.",
+    "enterRate": "Please enter exchange rate.",
+    "error": "An error occurred during calculation.",
+    "result": {
+      "convertedAmount": "Converted Amount",
+      "exchangeRate": "Exchange Rate",
+      "note": "Note:",
+      "noteText": "Exchange rates fluctuate in real-time, so the actual converted amount may vary."
+    }
   },
   "contact": {
     "title": "Contact Us",

@@ -14,10 +14,24 @@
     "salary": "연봉 실수령액",
     "severance": "퇴직금 계산기",
     "unemployment": "실업급여 계산기",
+    "weeklyRest": "주휴수당 계산기",
+    "annualLeave": "연차수당 계산기",
+    "overtime": "야근수당 계산기",
     "electric": "전기요금 계산기",
     "gas": "가스요금 계산기",
+    "water": "수도요금 계산기",
+    "management": "관리비 계산기",
+    "savings": "적금/예금 계산기",
+    "loan": "대출 계산기",
+    "goalSavings": "목돈 만들기 계산기",
+    "vat": "부가가치세 계산기",
+    "incomeTax": "종합소득세 계산기",
     "militaryDischarge": "전역일 계산기",
-    "babyDays": "아기 태어난지"
+    "babyDays": "아기 태어난지",
+    "dday": "D-Day 계산기",
+    "age": "만나이 계산기",
+    "bmi": "BMI 계산기",
+    "exchange": "환율 계산기"
   },
   "home": {
     "title": "생활 계산기",
@@ -26,6 +40,8 @@
     "category": {
       "salaryWelfare": "급여·복지",
       "livingCosts": "생활비용",
+      "finance": "금융",
+      "tax": "세금",
       "lifeCalc": "생활계산"
     },
     "calculators": {
@@ -56,6 +72,62 @@
       "babyDays": {
         "title": "아기 태어난지 계산기",
         "description": "아기의 출생일을 입력하면 태어난지 며칠째인지, 몇 주, 몇 개월인지 계산해드립니다."
+      },
+      "weeklyRest": {
+        "title": "주휴수당 계산기",
+        "description": "주 40시간 근무 시 주휴수당을 계산해드립니다."
+      },
+      "annualLeave": {
+        "title": "연차수당 계산기",
+        "description": "미사용 연차수당을 계산해드립니다."
+      },
+      "overtime": {
+        "title": "야근수당 계산기",
+        "description": "야근수당을 계산해드립니다."
+      },
+      "water": {
+        "title": "수도요금 계산기",
+        "description": "수도 사용량을 입력하면 예상 수도요금을 계산해드립니다."
+      },
+      "management": {
+        "title": "관리비 계산기",
+        "description": "아파트 관리비를 계산해드립니다."
+      },
+      "savings": {
+        "title": "적금/예금 계산기",
+        "description": "적금 또는 예금의 만기 금액과 이자를 계산해드립니다."
+      },
+      "loan": {
+        "title": "대출 계산기",
+        "description": "대출 상환액과 이자를 계산해드립니다."
+      },
+      "goalSavings": {
+        "title": "목돈 만들기 계산기",
+        "description": "목표 금액을 위한 월 납입액을 계산해드립니다."
+      },
+      "vat": {
+        "title": "부가가치세 계산기",
+        "description": "공급가액과 부가세를 계산해드립니다."
+      },
+      "incomeTax": {
+        "title": "종합소득세 계산기",
+        "description": "종합소득세를 간단히 계산해드립니다."
+      },
+      "dday": {
+        "title": "D-Day 계산기",
+        "description": "특정 날짜까지 남은 일수를 계산해드립니다."
+      },
+      "age": {
+        "title": "만나이 계산기",
+        "description": "생년월일을 기준으로 만나이를 계산해드립니다."
+      },
+      "bmi": {
+        "title": "BMI 계산기",
+        "description": "체중과 키를 입력하면 체질량지수를 계산해드립니다."
+      },
+      "exchange": {
+        "title": "환율 계산기",
+        "description": "주요 통화의 환율을 계산해드립니다."
       }
     }
   },
@@ -92,33 +164,28 @@
     }
   },
   "severance": {
-    "wageType": "임금 종류",
-    "averageWage": "평균임금",
-    "monthlySalary": "월급여액",
-    "averageWageDesc": "평균임금: 퇴직일 이전 3개월간의 임금 총액을 그 기간의 총 일수로 나눈 금액",
-    "monthlySalaryDesc": "월급여액: 최근 월급여액 (평균임금 계산의 근사치로 사용)",
-    "wageInput": "평균임금 (원)",
-    "monthlyWageInput": "월급여액 (원)",
-    "yearsOfService": "근속연수",
-    "years": "년",
-    "months": "개월",
-    "yearsHint": "소수점 입력 가능 (예: 3.5년 또는 3년 6개월)",
-    "calculateButton": "계산하기",
-    "enterWage": "임금을 입력해주세요.",
-    "enterValidWage": "올바른 임금을 입력해주세요.",
-    "enterYears": "근속연수를 입력해주세요.",
+    "requiredInput": "필수 입력",
+    "optionalInput": "선택 입력",
+    "startDate": "입사일",
+    "endDate": "퇴사일 (마지막 근무일)",
+    "monthlySalary": "월급 (세전)",
+    "sameFor3Months": "퇴사 전 3개월 동일",
+    "add1Million": "+100만",
+    "add100K": "+10만",
+    "annualBonus": "연간상여금",
+    "annualLeaveAllowance": "연차수당",
+    "enterStartDate": "입사일을 입력해주세요.",
+    "enterEndDate": "퇴사일을 입력해주세요.",
+    "enterValidDate": "올바른 날짜를 입력해주세요.",
+    "enterSalary": "월급을 입력해주세요.",
+    "enterValidSalary": "올바른 월급을 입력해주세요.",
     "error": "계산 중 오류가 발생했습니다. 다시 시도해주세요.",
     "result": {
-      "title": "계산 결과",
-      "averageWage": "평균임금",
-      "yearsOfService": "근속연수",
-      "formula": "계산식",
-      "formulaText": "평균임금 × 30일 × 근속연수",
-      "detail": "상세 계산",
       "severancePay": "예상 퇴직금",
-      "note": "참고:",
-      "noteText": "근로기준법 제34조에 따른 계산입니다.",
-      "noteText2": "실제 퇴직금은 평균임금 산정 방식, 각종 수당 포함 여부 등에 따라 달라질 수 있습니다."
+      "dailyAverageWage": "1일 평균 임금",
+      "copyResult": "결과 복사",
+      "reset": "초기화",
+      "copySuccess": "결과가 복사되었습니다."
     }
   },
   "unemployment": {
@@ -253,6 +320,290 @@
     "terms": "이용약관",
     "contact": "문의하기",
     "copyright": "All rights reserved."
+  },
+  "weeklyRest": {
+    "title": "주휴수당 계산기",
+    "description": "주 40시간 근무 시 주휴수당을 계산해드립니다. (2026년 기준)",
+    "weeklyHours": "주 근무시간",
+    "dailyWage": "일급",
+    "daysWorked": "근무일수",
+    "calculateButton": "계산하기",
+    "enterHours": "주 근무시간을 입력해주세요.",
+    "enterDailyWage": "일급을 입력해주세요.",
+    "enterDays": "근무일수를 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "weeklyRestPay": "주휴수당",
+      "formula": "계산식: (일급 × 주근무일수) ÷ 주소정근로일수 × 1일",
+      "note": "주 40시간 근무 시 주휴수당은 주 소정근로일수로 나눈 1일에 해당하는 임금입니다."
+    }
+  },
+  "annualLeave": {
+    "title": "연차수당 계산기",
+    "description": "미사용 연차수당을 계산해드립니다. (2026년 기준)",
+    "monthlySalary": "월급여액",
+    "unusedDays": "미사용 연차 일수",
+    "calculateButton": "계산하기",
+    "enterSalary": "월급여액을 입력해주세요.",
+    "enterDays": "미사용 연차 일수를 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "annualLeavePay": "연차수당",
+      "formula": "계산식: (월급여액 ÷ 월 소정근로일수) × 미사용 연차 일수",
+      "note": "연차수당은 평균임금에 상당하는 금액입니다."
+    }
+  },
+  "overtime": {
+    "title": "야근수당 계산기",
+    "description": "야근수당을 계산해드립니다. (2026년 기준)",
+    "dailyWage": "일급",
+    "overtimeHours": "야근 시간",
+    "calculateButton": "계산하기",
+    "enterDailyWage": "일급을 입력해주세요.",
+    "enterHours": "야근 시간을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "overtimePay": "야근수당",
+      "hourlyWage": "시간급",
+      "formula": "계산식: (일급 ÷ 8시간) × 1.5 × 야근 시간",
+      "note": "야근수당은 시간급의 1.5배 또는 일급의 50% 가산입니다."
+    }
+  },
+  "water": {
+    "title": "수도요금 계산기",
+    "description": "수도 사용량을 입력하면 예상 수도요금을 계산해드립니다. (2026년 기준)",
+    "usage": "사용량 (㎥)",
+    "usageHint": "수도 사용량을 ㎥ 단위로 입력하세요",
+    "calculateButton": "계산하기",
+    "enterUsage": "올바른 사용량을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "basicCharge": "기본료",
+      "usageCharge": "사용료",
+      "vat": "부가가치세 (VAT)",
+      "total": "예상 수도요금",
+      "rateGuide": "사용료 구간:",
+      "rate1": "20㎥ 이하: ㎥당 330원",
+      "rate2": "21~50㎥: ㎥당 550원",
+      "rate3": "51~100㎥: ㎥당 880원",
+      "rate4": "101~200㎥: ㎥당 1,210원",
+      "rate5": "201㎥ 이상: ㎥당 1,650원",
+      "note": "참고:",
+      "noteText": "주택용 수도 기준으로 계산되었습니다. 실제 요금은 지역에 따라 달라질 수 있습니다."
+    }
+  },
+  "management": {
+    "title": "관리비 계산기",
+    "description": "아파트 관리비를 계산해드립니다. (2026년 기준)",
+    "area": "전용면적 (㎡)",
+    "areaHint": "아파트 전용면적을 ㎡ 단위로 입력하세요",
+    "managementType": "관리비 유형",
+    "basic": "기본 관리비",
+    "comprehensive": "종합 관리비",
+    "calculateButton": "계산하기",
+    "enterArea": "전용면적을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "basicFee": "기본 관리비",
+      "elevatorFee": "승강기 유지비",
+      "securityFee": "경비비",
+      "cleaningFee": "청소비",
+      "lightingFee": "조명비",
+      "repairFee": "수선비",
+      "total": "예상 관리비",
+      "note": "참고:",
+      "noteText": "대략적인 계산입니다. 실제 관리비는 아파트 규모, 시설 등에 따라 달라질 수 있습니다."
+    }
+  },
+  "savings": {
+    "title": "적금/예금 계산기",
+    "description": "적금 또는 예금의 만기 금액과 이자를 계산해드립니다. (2026년 기준)",
+    "type": "상품 유형",
+    "savings": "적금",
+    "deposit": "예금",
+    "principal": "원금",
+    "interestRate": "연 이자율 (%)",
+    "period": "기간",
+    "periodMonths": "개월",
+    "periodYears": "년",
+    "calculateButton": "계산하기",
+    "enterPrincipal": "원금을 입력해주세요.",
+    "enterRate": "이자율을 입력해주세요.",
+    "enterPeriod": "기간을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "principal": "원금",
+      "interest": "이자",
+      "total": "만기 금액",
+      "monthlyPayment": "월 납입액",
+      "note": "참고:",
+      "noteText": "이자는 실제 은행 이자율에 따라 달라질 수 있으며, 세전 기준입니다."
+    }
+  },
+  "loan": {
+    "title": "대출 계산기",
+    "description": "대출 상환액과 이자를 계산해드립니다. (2026년 기준)",
+    "loanAmount": "대출 원금",
+    "interestRate": "연 이자율 (%)",
+    "loanPeriod": "대출 기간",
+    "repaymentType": "상환 방식",
+    "equalPrincipal": "원리금 균등상환",
+    "equalPayment": "원금 균등상환",
+    "periodYears": "년",
+    "periodMonths": "개월",
+    "calculateButton": "계산하기",
+    "enterLoanAmount": "대출 원금을 입력해주세요.",
+    "enterRate": "이자율을 입력해주세요.",
+    "enterPeriod": "대출 기간을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "monthlyPayment": "월 상환액",
+      "totalPayment": "총 상환액",
+      "totalInterest": "총 이자",
+      "firstPayment": "첫 달 상환액",
+      "lastPayment": "마지막 달 상환액",
+      "note": "참고:",
+      "noteText": "실제 대출 이자는 신용등급, 담보 등에 따라 달라질 수 있습니다."
+    }
+  },
+  "goalSavings": {
+    "title": "목돈 만들기 계산기",
+    "description": "목표 금액을 위한 월 납입액을 계산해드립니다. (2026년 기준)",
+    "goalAmount": "목표 금액",
+    "currentAmount": "현재 금액",
+    "interestRate": "연 이자율 (%)",
+    "period": "기간",
+    "periodMonths": "개월",
+    "periodYears": "년",
+    "calculateButton": "계산하기",
+    "enterGoal": "목표 금액을 입력해주세요.",
+    "enterRate": "이자율을 입력해주세요.",
+    "enterPeriod": "기간을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "monthlyPayment": "월 납입액",
+      "totalSavings": "총 저축액",
+      "interestEarned": "예상 이자",
+      "note": "참고:",
+      "noteText": "이자는 복리로 계산되며, 실제 이자율에 따라 달라질 수 있습니다."
+    }
+  },
+  "vat": {
+    "title": "부가가치세 계산기",
+    "description": "공급가액과 부가세를 계산해드립니다. (2026년 기준)",
+    "inputType": "입력 유형",
+    "supplyPrice": "공급가액 (VAT 별도)",
+    "totalPrice": "공급가액 (VAT 포함)",
+    "amount": "금액",
+    "calculateButton": "계산하기",
+    "enterAmount": "금액을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "supplyPrice": "공급가액",
+      "vat": "부가가치세 (10%)",
+      "totalPrice": "합계 금액",
+      "note": "참고:",
+      "noteText": "부가가치세는 2026년 기준 10%입니다."
+    }
+  },
+  "incomeTax": {
+    "title": "종합소득세 계산기",
+    "description": "종합소득세를 간단히 계산해드립니다. (2026년 기준)",
+    "annualIncome": "연 소득",
+    "deductions": "소득공제액",
+    "calculateButton": "계산하기",
+    "enterIncome": "연 소득을 입력해주세요.",
+    "enterDeductions": "소득공제액을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "taxableIncome": "과세표준",
+      "incomeTax": "소득세",
+      "localTax": "지방소득세",
+      "totalTax": "총 세액",
+      "note": "참고:",
+      "noteText": "2026년 소득세율 기준으로 계산되었습니다."
+    }
+  },
+  "dday": {
+    "title": "D-Day 계산기",
+    "description": "특정 날짜까지 남은 일수를 계산해드립니다.",
+    "targetDate": "목표 날짜",
+    "targetDateHint": "목표 날짜를 선택해주세요",
+    "calculateButton": "계산하기",
+    "enterDate": "목표 날짜를 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "daysRemaining": "남은 일수",
+      "daysPassed": "지난 일수",
+      "weeksRemaining": "남은 주수",
+      "monthsRemaining": "남은 개월수",
+      "note": "참고:",
+      "noteText": "D-Day는 목표 날짜를 포함하지 않고 계산됩니다."
+    }
+  },
+  "age": {
+    "title": "만나이 계산기",
+    "description": "생년월일을 기준으로 만나이를 계산해드립니다.",
+    "birthDate": "생년월일",
+    "birthDateHint": "생년월일을 선택해주세요",
+    "calculateButton": "계산하기",
+    "enterDate": "생년월일을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "age": "만나이",
+      "years": "년",
+      "months": "개월",
+      "days": "일",
+      "nextBirthday": "다음 생일까지",
+      "note": "참고:",
+      "noteText": "만나이는 생일이 지나야 한 살씩 추가됩니다."
+    }
+  },
+  "bmi": {
+    "title": "BMI 계산기",
+    "description": "체중과 키를 입력하면 체질량지수를 계산해드립니다.",
+    "height": "키",
+    "heightCm": "cm",
+    "heightM": "m",
+    "weight": "체중",
+    "weightKg": "kg",
+    "calculateButton": "계산하기",
+    "enterHeight": "키를 입력해주세요.",
+    "enterWeight": "체중을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "bmi": "BMI",
+      "category": "체질량지수 범주",
+      "underweight": "저체중",
+      "normal": "정상",
+      "overweight": "과체중",
+      "obese": "비만",
+      "note": "참고:",
+      "noteText": "BMI = 체중(kg) ÷ 키(m)²"
+    }
+  },
+  "exchange": {
+    "title": "환율 계산기",
+    "description": "주요 통화의 환율을 계산해드립니다. (2026년 기준)",
+    "fromCurrency": "환전할 통화",
+    "toCurrency": "환전받을 통화",
+    "amount": "금액",
+    "krw": "원 (KRW)",
+    "usd": "달러 (USD)",
+    "eur": "유로 (EUR)",
+    "jpy": "엔 (JPY)",
+    "cny": "위안 (CNY)",
+    "exchangeRate": "환율",
+    "calculateButton": "계산하기",
+    "enterAmount": "금액을 입력해주세요.",
+    "enterRate": "환율을 입력해주세요.",
+    "error": "계산 중 오류가 발생했습니다.",
+    "result": {
+      "convertedAmount": "환전 금액",
+      "exchangeRate": "환율",
+      "note": "참고:",
+      "noteText": "환율은 실시간으로 변동하므로 실제 환전 시 금액이 달라질 수 있습니다."
+    }
   },
   "contact": {
     "title": "문의하기",

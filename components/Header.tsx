@@ -17,14 +17,27 @@ export default function Header() {
     { href: `/${locale}/salary`, label: t('salary') },
     { href: `/${locale}/severance`, label: t('severance') },
     { href: `/${locale}/unemployment`, label: t('unemployment') },
+    { href: `/${locale}/weekly-rest`, label: t('weeklyRest') },
+    { href: `/${locale}/annual-leave`, label: t('annualLeave') },
+    { href: `/${locale}/overtime`, label: t('overtime') },
     { href: `/${locale}/electric`, label: t('electric') },
     { href: `/${locale}/gas`, label: t('gas') },
+    { href: `/${locale}/water`, label: t('water') },
+    { href: `/${locale}/management`, label: t('management') },
+    { href: `/${locale}/savings`, label: t('savings') },
+    { href: `/${locale}/loan`, label: t('loan') },
+    { href: `/${locale}/goal-savings`, label: t('goalSavings') },
+    { href: `/${locale}/vat`, label: t('vat') },
+    { href: `/${locale}/income-tax`, label: t('incomeTax') },
     { href: `/${locale}/military-discharge`, label: t('militaryDischarge') },
     { href: `/${locale}/baby-days`, label: t('babyDays') },
+    { href: `/${locale}/dday`, label: t('dday') },
+    { href: `/${locale}/age`, label: t('age') },
+    { href: `/${locale}/bmi`, label: t('bmi') },
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href={`/${locale}`} className="text-xl font-bold text-blue-600 hover:text-blue-700">
@@ -37,7 +50,7 @@ export default function Header() {
             <div className="relative">
               <button
                 onClick={() => setIsCalcMenuOpen(!isCalcMenuOpen)}
-                className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors flex items-center"
+                className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 flex items-center"
               >
                 {t('calculatorList')}
                 <svg
@@ -50,13 +63,13 @@ export default function Header() {
                 </svg>
               </button>
               {isCalcMenuOpen && (
-                <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50 border">
+                <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
                   {calculators.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsCalcMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm transition-colors ${
+                      className={`block px-4 py-2 text-sm ${
                         pathname === item.href
                           ? 'bg-blue-50 text-blue-700'
                           : 'text-gray-700 hover:bg-gray-100'
@@ -97,11 +110,17 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden pb-4 space-y-1">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 mb-2">
+              <span className="text-sm font-medium text-gray-700">설정</span>
+              <div className="flex items-center space-x-2">
+                <LanguageSwitcher />
+              </div>
+            </div>
             {calculators.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`block px-4 py-2 rounded-md text-base font-medium transition-colors ${
+                className={`block px-4 py-2 rounded-md text-base font-medium ${
                   pathname === item.href
                     ? 'bg-blue-100 text-blue-700'
                     : 'text-gray-700 hover:bg-gray-100'

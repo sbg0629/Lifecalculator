@@ -31,7 +31,7 @@ export default async function PrivacyPage({
   const { locale } = await params;
   
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">
           {locale === 'ko' ? '개인정보처리방침' : 'Privacy Policy'}
@@ -133,7 +133,7 @@ export default async function PrivacyPage({
               <section>
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. 개인정보 처리방침 변경</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  이 개인정보처리방침은 2024년 1월 1일부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 
+                  이 개인정보처리방침은 2026년 1월 1일부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 
                   변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
                 </p>
               </section>
@@ -236,7 +236,7 @@ export default async function PrivacyPage({
               <section>
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Changes to Privacy Policy</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  This privacy policy applies from January 1, 2024, and if there are additions, deletions, or corrections to the changes 
+                  This privacy policy applies from January 1, 2026, and if there are additions, deletions, or corrections to the changes 
                   in accordance with laws and policies, we will notify you through the notice 7 days before the implementation of the changes.
                 </p>
               </section>
@@ -247,4 +247,5 @@ export default async function PrivacyPage({
     </div>
   );
 }
+
 

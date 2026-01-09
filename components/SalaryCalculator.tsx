@@ -27,7 +27,7 @@ export default function SalaryCalculator() {
     netMonthlySalary: number;
   } | null>(null);
 
-  // 근로소득공제 계산 (2024년 기준)
+  // 근로소득공제 계산 (2026년 기준)
   const calculateWorkIncomeDeduction = (annualIncome: number): number => {
     if (annualIncome <= 5000000) {
       return annualIncome * 0.7;
@@ -71,7 +71,7 @@ export default function SalaryCalculator() {
     // 과세표준 = 근로소득 - 근로소득공제 - 소득공제
     const taxableStandard = Math.max(0, workIncome - workIncomeDeduction - totalIncomeDeduction);
     
-    // 소득세 계산 (2024년 소득세율)
+    // 소득세 계산 (2026년 소득세율)
     let incomeTax = 0;
     if (taxableStandard <= 12000000) {
       incomeTax = taxableStandard * 0.06;
@@ -123,7 +123,7 @@ export default function SalaryCalculator() {
       const monthlySalary = salaryType === 'annual' ? salary / 12 : salary;
       const annualSalary = salaryType === 'annual' ? salary : salary * 12;
 
-      // 4대보험 계산 (2024년 기준)
+      // 4대보험 계산 (2026년 기준)
       // 보험료 산정 기준: 월급여액 - 비과세액
       const insuranceBase = monthlySalary - nonTaxable;
 
@@ -202,9 +202,9 @@ export default function SalaryCalculator() {
 
   return (
     <Fragment>
-      <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-3">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 transition-colors">
             {t('salaryType')}
           </label>
           <div className="flex gap-4">
@@ -217,7 +217,7 @@ export default function SalaryCalculator() {
                 onChange={(e) => setSalaryType(e.target.value as SalaryType)}
                 className="mr-2"
               />
-              <span className="text-gray-700">{t('annualSalary')}</span>
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('annualSalary')}</span>
             </label>
             <label className="flex items-center">
               <input
@@ -228,13 +228,13 @@ export default function SalaryCalculator() {
                 onChange={(e) => setSalaryType(e.target.value as SalaryType)}
                 className="mr-2"
               />
-              <span className="text-gray-700">{t('monthlySalary')}</span>
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('monthlySalary')}</span>
             </label>
           </div>
         </div>
 
         <div className="mb-6">
-          <label htmlFor="salary" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="salary" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
             {t('amount')} ({getCurrency()})
           </label>
           <div className="flex items-center gap-2">
@@ -247,14 +247,14 @@ export default function SalaryCalculator() {
                 setSalaryAmount(value.replace(/\B(?=(\d{3})+(?!\d))/g, ','));
               }}
               placeholder="0"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
             />
-            <span className="text-gray-600">{getCurrency()}</span>
+            <span className="text-gray-600 dark:text-gray-400 transition-colors">{getCurrency()}</span>
           </div>
         </div>
 
         <div className="mb-6">
-          <label htmlFor="nonTaxable" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="nonTaxable" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
             {t('nonTaxable')} ({getCurrency()})
           </label>
           <div className="flex items-center gap-2">
@@ -267,14 +267,14 @@ export default function SalaryCalculator() {
                 setNonTaxableAmount(value.replace(/\B(?=(\d{3})+(?!\d))/g, ','));
               }}
               placeholder="100000"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
             />
-            <span className="text-gray-600">{t('nonTaxableHint')}</span>
+            <span className="text-gray-600 dark:text-gray-400 transition-colors">{t('nonTaxableHint')}</span>
           </div>
         </div>
 
         <div className="mb-6">
-          <label htmlFor="dependents" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="dependents" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
             {t('dependents')}
           </label>
           <div className="flex items-center gap-2">
@@ -287,14 +287,14 @@ export default function SalaryCalculator() {
                 setDependents(value);
               }}
               placeholder="1"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
             />
-            <span className="text-gray-600">{t('dependentsHint')}</span>
+            <span className="text-gray-600 dark:text-gray-400 transition-colors">{t('dependentsHint')}</span>
           </div>
         </div>
 
         <div className="mb-6">
-          <label htmlFor="children" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="children" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
             {t('children')}
           </label>
           <div className="flex items-center gap-2">
@@ -307,9 +307,9 @@ export default function SalaryCalculator() {
                 setChildrenUnder20(value);
               }}
               placeholder="0"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+              className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
             />
-            <span className="text-gray-600">{t('childrenHint')}</span>
+            <span className="text-gray-600 dark:text-gray-400 transition-colors">{t('childrenHint')}</span>
           </div>
         </div>
 
@@ -320,62 +320,64 @@ export default function SalaryCalculator() {
           {t('calculateButton')}
         </button>
 
-        <p className="mt-4 text-sm text-gray-500 text-center">
-          {t('note')}
-        </p>
+        {result && (
+          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center transition-colors">
+            {t('note')}
+          </p>
+        )}
       </div>
 
       {result && (
-        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors">{commonT('result')}</h2>
           <div className="space-y-4">
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.monthlySalary')}</span>
-              <span className="text-lg font-semibold text-gray-900">
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.monthlySalary')}</span>
+              <span className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors">
                 {formatNumber(result.monthlySalary)}{getCurrency()}
               </span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.annualSalary')}</span>
-              <span className="text-gray-900">{formatNumber(result.annualSalary)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.annualSalary')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.annualSalary)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.nonTaxableAmount')}</span>
-              <span className="text-gray-900">{formatNumber(result.nonTaxableAmount)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.nonTaxableAmount')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.nonTaxableAmount)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.nationalPension')}</span>
-              <span className="text-gray-900">{formatNumber(result.nationalPension)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.nationalPension')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.nationalPension)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.healthInsurance')}</span>
-              <span className="text-gray-900">{formatNumber(result.healthInsurance)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.healthInsurance')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.healthInsurance)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.employmentInsurance')}</span>
-              <span className="text-gray-900">{formatNumber(result.employmentInsurance)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.employmentInsurance')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.employmentInsurance)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.industrialAccidentInsurance')}</span>
-              <span className="text-gray-900">{formatNumber(result.industrialAccidentInsurance)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.industrialAccidentInsurance')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.industrialAccidentInsurance)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.incomeTax')}</span>
-              <span className="text-gray-900">{formatNumber(result.incomeTax)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.incomeTax')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.incomeTax)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.localIncomeTax')}</span>
-              <span className="text-gray-900">{formatNumber(result.localIncomeTax)}{getCurrency()}</span>
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.localIncomeTax')}</span>
+              <span className="text-gray-900 dark:text-gray-100 transition-colors">{formatNumber(result.localIncomeTax)}{getCurrency()}</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b">
-              <span className="text-gray-700">{t('result.totalDeduction')}</span>
-              <span className="text-lg font-semibold text-red-600">
+            <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <span className="text-gray-700 dark:text-gray-300 transition-colors">{t('result.totalDeduction')}</span>
+              <span className="text-lg font-semibold text-red-600 dark:text-red-400 transition-colors">
                 -{formatNumber(result.totalDeduction)}{getCurrency()}
               </span>
             </div>
-            <div className="flex justify-between items-center py-3 bg-blue-50 rounded-md px-4 mt-4">
-              <span className="text-xl font-semibold text-gray-900">{t('result.netMonthlySalary')}</span>
-              <span className="text-2xl font-bold text-blue-600">
+            <div className="flex justify-between items-center py-3 bg-blue-50 dark:bg-blue-900/30 rounded-md px-4 mt-4 transition-colors">
+              <span className="text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors">{t('result.netMonthlySalary')}</span>
+              <span className="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors">
                 {formatNumber(result.netMonthlySalary)}{getCurrency()}
               </span>
             </div>

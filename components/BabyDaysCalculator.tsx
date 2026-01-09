@@ -117,7 +117,7 @@ export default function BabyDaysCalculator() {
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
         <div className="mb-6">
           <label htmlFor="birthDate" className="block text-sm font-medium text-gray-700 mb-2">
             {t('birthDate')}
@@ -136,7 +136,7 @@ export default function BabyDaysCalculator() {
       </div>
 
       {result && (
-        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
           <div className="space-y-4">
             <div className="bg-blue-50 rounded-md p-6">
