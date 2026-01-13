@@ -33,29 +33,21 @@ export default function BabyDaysCalculator() {
       today.setHours(0, 0, 0, 0);
       birth.setHours(0, 0, 0, 0);
 
-      // 태어난지 며칠째인지 계산 (태어난 날 = 1일째)
       const daysDiff = Math.floor((today.getTime() - birth.getTime()) / (1000 * 60 * 60 * 24));
-      const daysOld = daysDiff + 1; // 태어난 날을 1일째로 계산
+      const daysOld = daysDiff + 1;
 
       if (daysOld < 0) {
         setResult(null);
         return;
       }
 
-      // 주 계산
       const weeksOld = Math.floor(daysOld / 7);
-
-      // 개월 계산 (대략적)
       const monthsOld = Math.floor(daysOld / 30.44);
-
-      // 년 계산
       const yearsOld = Math.floor(daysOld / 365.25);
 
-      // 100일 계산
       const next100Days = new Date(birth);
       next100Days.setDate(next100Days.getDate() + 100);
 
-      // 다음 생일 계산
       const nextBirthday = new Date(birth);
       nextBirthday.setFullYear(today.getFullYear());
       if (nextBirthday < today) {
@@ -84,10 +76,14 @@ export default function BabyDaysCalculator() {
     }
   }, [birthDate, calculate]);
 
+  // 안전한 날짜 포맷팅 함수 (서버/클라이언트 불일치 방지)
   const formatDate = (date: Date) => {
+    if (!date) return '';
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
+    
+    // 요일을 번역 키에서 가져오도록 수정하거나 안전하게 처리
     const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
     const weekday = weekdays[date.getDay()];
     return `${year}년 ${month}월 ${day}일 (${weekday})`;
@@ -135,6 +131,7 @@ export default function BabyDaysCalculator() {
         </div>
       </div>
 
+      {/* Hydration Error 방지를 위해 result가 있을 때만 렌더링 */}
       {result && (
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
