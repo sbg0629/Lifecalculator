@@ -7,6 +7,7 @@ export default function BabyDaysCalculator() {
   const t = useTranslations('babyDays');
   const commonT = useTranslations('common');
   const [birthDate, setBirthDate] = useState<string>('');
+  const [isMounted, setIsMounted] = useState(false); // 빌드 에러 방지를 위한 마운트 상태 추가
   const [result, setResult] = useState<{
     daysOld: number;
     weeksOld: number;
@@ -15,6 +16,11 @@ export default function BabyDaysCalculator() {
     next100Days: Date;
     nextBirthday: Date;
   } | null>(null);
+
+  // 컴포넌트가 브라우저에 마운트되었는지 확인
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const calculate = useCallback(() => {
     try {
@@ -69,24 +75,25 @@ export default function BabyDaysCalculator() {
   }, [birthDate]);
 
   useEffect(() => {
-    if (birthDate) {
+    if (birthDate && isMounted) {
       calculate();
     } else {
       setResult(null);
     }
-  }, [birthDate, calculate]);
+  }, [birthDate, calculate, isMounted]);
 
-  // 안전한 날짜 포맷팅 함수 (서버/클라이언트 불일치 방지)
   const formatDate = (date: Date) => {
     if (!date) return '';
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    
-    // 요일을 번역 키에서 가져오도록 수정하거나 안전하게 처리
-    const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
-    const weekday = weekdays[date.getDay()];
-    return `${year}년 ${month}월 ${day}일 (${weekday})`;
+    try {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+      const weekday = weekdays[date.getDay()];
+      return `${year}년 ${month}월 ${day}일 (${weekday})`;
+    } catch (e) {
+      return '';
+    }
   };
 
   const formatNumber = (num: number) => {
@@ -111,6 +118,11 @@ export default function BabyDaysCalculator() {
     }
   };
 
+  // 마운트되기 전에는 빈 화면을 보여주어 서버 사이드 에러 방지
+  if (!isMounted) {
+    return null; 
+  }
+
   return (
     <>
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
@@ -131,7 +143,6 @@ export default function BabyDaysCalculator() {
         </div>
       </div>
 
-      {/* Hydration Error 방지를 위해 result가 있을 때만 렌더링 */}
       {result && (
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-8 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">{commonT('result')}</h2>
