@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
       </main>
       <Footer />
       <Analytics />
+      <SpeedInsights />
     </NextIntlClientProvider>
   );
 }
