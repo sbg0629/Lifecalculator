@@ -124,9 +124,10 @@ export default function BMICalculator() {
                 <strong>{t('result.note')}</strong> {t('result.noteText')}
               </p>
               <div className="mt-4 space-y-2 text-sm text-gray-600">
-                <p>• {t('result.underweight')}: BMI < 18.5</p>
-                <p>• {t('result.normal')}: 18.5 ≤ BMI < 23</p>
-                <p>• {t('result.overweight')}: 23 ≤ BMI < 25</p>
+                {/* < 대신 &lt; 를 사용하여 오류를 수정했습니다 */}
+                <p>• {t('result.underweight')}: BMI &lt; 18.5</p>
+                <p>• {t('result.normal')}: 18.5 ≤ BMI &lt; 23</p>
+                <p>• {t('result.overweight')}: 23 ≤ BMI &lt; 25</p>
                 <p>• {t('result.obese')}: BMI ≥ 25</p>
               </div>
             </div>
@@ -136,4 +137,3 @@ export default function BMICalculator() {
     </>
   );
 }
-
